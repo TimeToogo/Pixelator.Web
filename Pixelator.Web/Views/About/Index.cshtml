@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<div id="AboutText" class="Fill">
+    <div class="Section">
+        <div class="Content">
+            Pixelator.io is an online web service that allows you to store you files and data within the pixels of a picture.
+        </div>
+        <div class="Section">
+            <div class="Title">Steps</div>
+            <div class="Content">
+                <ul class="Steps">
+                    <li>
+                        <p>Select the data that you want to store and optionally provide a password to securely encrypt your data.</p>
+                    </li>
+                    <li>
+                        <p>Download and save the picture containing the encoded data.</p>
+                    </li>
+                    <li>
+                        <p>When required you can return with the picture and password to retrieve your original data.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="Section">
+        <div class="Content">
+            
+        </div>
+    </div>
+</div>
+
+@section css {
+    @Styles.Render("~/Content/Css/About/Index.css")
+}

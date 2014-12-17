@@ -2,10 +2,10 @@
 
 namespace Pixelator.Web.Controllers
 {
-    public class WhatIsThisController : BaseController
+    public class AboutController : BaseController
     {
         //
-        // GET/AJAX: /WhatIsThis/
+        // GET/AJAX: /About/
 
         public ViewResult Index()
         {

@@ -29,15 +29,13 @@
     .Steps > li {
         list-style:none;
         position:relative;
-        padding-left:40px;
+        color:#888;
+        font-size:16px;
+	    vertical-align: bottom;
     }
 
     .Steps > li:before {
-        font-size:40px;
-        position:absolute;
-        left:0;
-        top:15px;
-        bottom:0;
+        font-size:30px;
         content: counter(li) ".";
         counter-increment: li;
         color:#bbb;
@@ -45,18 +43,5 @@
     }
 
         .Steps > li > p {
-            width:79%;
             display:inline-block;
         }
-
-        .Steps > li > img {
-            /*width:20%;
-            max-height:100%;*/
-            display:inline-block;
-            float:right;
-        }
-
-#GetStartedNavigation {
-    width:300px;
-    margin: 30px auto;
-}

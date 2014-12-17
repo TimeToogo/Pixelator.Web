@@ -176,7 +176,7 @@
     <Compile Include="Controllers\DecoderController.cs" />
     <Compile Include="Controllers\EncoderController.cs" />
     <Compile Include="Controllers\Api\EncoderController.cs" />
-    <Compile Include="Controllers\WhatIsThisController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Filters\AjaxOnlyAttribute.cs" />
     <Compile Include="Filters\DownloadCookieAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -205,7 +205,7 @@
     <Content Include="Content\Css\Encoder\Configure.css" />
     <Content Include="Content\Css\Encoder\Create.css" />
     <Content Include="Content\Css\Encoder\Display.css" />
-    <Content Include="Content\Css\WhatIsThis\Index.css" />
+    <Content Include="Content\Css\About\Index.css" />
     <Content Include="Content\Images\Directory.png" />
     <Content Include="Content\Images\DirectoryOpen.png" />
     <Content Include="Content\Images\File.png" />
@@ -318,7 +318,6 @@
     <Content Include="Scripts\Referenced\knockout-2.2.1.js" />
     <Content Include="Scripts\Referenced\modernizr-2.6.2.js" />
     <None Include="Scripts\Referenced\_references.js" />
-    <Content Include="Scripts\WhatIsThis\Index.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -351,7 +350,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Transcoding\DataList.cshtml" />
     <Content Include="Views\Shared\Transcoding\ErrorDialog.cshtml" />
-    <Content Include="Views\WhatIsThis\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Api\Pixelator.Api\Pixelator.Api.csproj">
