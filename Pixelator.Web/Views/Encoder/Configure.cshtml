@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Configure your image";
+}
+
+<div id="ConfigureImage" class="Fill">
+    <div id="StandardConfiguration">
+        <input type="text" id="FileNameInput" placeholder="File Name:"/>
+    </div>
+
+    <div id="AdvancedConfigurationHeader">
+        <div class="HorizontalSeperator"></div>
+        <button id="AdvancedConfigurationButton">Advanced</button>
+        <div class="HorizontalSeperator"></div>
+    </div>
+    <div id="AdvancedConfiguration" class="Hidden">
+        <div id="NonEncryptionConfiguration">
+        </div>
+        <div>
+            <div class="Input">
+                <label class="OptionLabel">Image Format:</label>
+                <select id="ImageFormat">
+                    <option value="Png" selected="selected">PNG</option>
+                    <option value="Gif">GIF</option>
+                    <option value="Bmp">BMP</option>
+                </select>
+            </div>
+            <div class="Input">
+                <label class="OptionLabel">Compression Level:</label>
+                <select id="CompressionLevel">
+                    <option value="None">None</option>
+                    <option value="Minimum">Minimum</option>
+                    <option value="Standard" selected="selected">Standard</option>
+                    <option value="Maximum">Maximum</option>
+                </select>
+            </div>
+            <div class="Input">
+                <label class="OptionLabel">Compression Algorithm:</label>
+                <select id="CompressionAlgorithm">
+                    <option value="Gzip" selected="selected">GZIP</option>
+                    <option value="Zlib">ZLIB</option>
+                    <option value="Deflate">DEFLATE</option>
+                </select>
+            </div>
+        </div>
+        <div id="EncryptionConfiguration">
+            <div class="Input">
+                <label class="OptionLabel">Encryption Algorithm:</label>
+                <select id="EncryptionAlgorithm">
+                    <option value="Aes256" selected="selected">AES</option>
+                    <option value="Rijndael256">Rijndael</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    @{
+        Html.RenderPartial("~/Views/Shared/Transcoding/ErrorDialog.cshtml", "ConfigureImageErrorDialog");
+    }
+</div>

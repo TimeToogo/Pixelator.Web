@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Creating your image";
+}
+
+<div id="CreateImage" class="Fill">
+    <div id="ProgressInfo">
+        <div id="Status"></div>
+        <div id="ProgressBar"></div>
+    </div>
+    <iframe id="DownloadIFrame" name="DownloadIFrame" class="Hidden"></iframe>
+
+    @{
+        Html.RenderPartial("~/Views/Shared/Transcoding/ErrorDialog.cshtml", "CreatingImageErrorDialog");
+    }
+</div>

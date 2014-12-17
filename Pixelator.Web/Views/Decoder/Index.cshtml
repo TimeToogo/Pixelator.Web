@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Decode a picture";
+}
+
+<div id="DecoderBody" class="TranscodingBody Fill">
+    <div id="DecoderHeader" class="TranscodingHeader">
+        <div id="DecoderContentTitle" class="TranscodingContentTitle"></div>
+        <div id="DecoderNavigation" class="TranscodingNavigation">
+            <button id="BackButton" class="NavigationButton Blue">Back</button>
+            <button id="ContinueButton" class="NavigationButton Blue">Continue</button>
+        </div>
+        <div class="HorizontalSeperator"></div>
+    </div>
+
+    <div id="DecoderContent" class="TranscodingContent">
+        <div class="Wrapper">
+        </div>
+    </div>
+</div>
+
+@section css {
+    @Styles.Render("~/Bundles/Css/Common/Transcoding")
+}
+
+@section scripts {
+    @Scripts.Render("~/Bundles/Js/Common/Transcoding")
+    @Scripts.Render("~/Bundles/Js/Decoder")
+}

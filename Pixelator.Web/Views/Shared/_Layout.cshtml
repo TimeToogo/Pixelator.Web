@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,user-scalable=no"/>
+    <title>Pixelator.io</title>
+    @Styles.Render("~/Bundles/Css/Common")
+    @RenderSection("css", false)
+    @Styles.Render("~/Content/themes/base/Bundle")
+    @Scripts.Render("~/Bundles/Js/Modernizr")
+    @Scripts.Render("~/Bundles/Js/Jquery")
+    @Scripts.Render("~/Bundles/Js/JqueryUI")
+    @Scripts.Render("~/Bundles/Js/JqueryPlugins")
+    @Scripts.Render("~/Bundles/Js/Common")
+    @RenderSection("scripts", false)
+</head>
+<body>
+<header>
+    <div class="Container">
+        <a id="Logo" href="@Url.Action("Index", "Encoder")">
+            Pixelator.io
+            <img src="~/Content/Images/Logo.png" alt="Logo" />
+            <span id="Subtitle">Secure data in pictures</span>
+        </a>
+        <nav>
+            <a href="@Url.Action("Index", "Encoder")">Encoder</a>
+            <a href="@Url.Action("Index", "Decoder")">Decoder</a>
+            <a href="@Url.Action("Index", "WhatIsThis")">What is this</a>
+        </nav>
+        <div class="social">
+            @RenderPage("SocialMediaButtons.cshtml")
+        </div>
+    </div>
+</header>
+
+<div class="Container">
+    <div id="Content" class="ClearFix">
+        <div id="ContentOverlay" class="Overlay Hidden">
+        </div>
+
+        <div id="ContentTitle">@ViewBag.Title</div>
+        <div class="HorizontalSeperator"></div>
+
+        <div class="Wrapper Fill">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+<footer>
+    <span id="SiteBy">Site by <a href="http://elliotswebsite.com/" target="_blank">TimeToogo</a></span>
+</footer>
+
+<div id="BadBrowser" class="Hidden">
+    <div id="BadBrowserOverlay" class="Overlay"></div>
+    <div id="BadBroswerDialog">
+        <div id="BadBrowserHeader">It seems you are using an unsupported browser</div>
+        <p id="BadBrowserContent">
+            Pixelator.io uses the very latest in web technologies from both security and usability standpoints.
+            To take full advantage of this service and the rest of the internet we ask you to please update to the latest browser.
+            We highly recommend <a href="http://www.google.com/chrome/">Google Chrome</a> for the best user experience, so please download it if you already haven't.
+        </p>
+    </div>
+</div>
+</body>
+</html>

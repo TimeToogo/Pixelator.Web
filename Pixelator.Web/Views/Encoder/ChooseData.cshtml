@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Specify your data";
+}
+
+<div id="ChooseData" class="Fill">
+    <div id="DataControls">
+        <button id="AddFilesButton" class="Green"><img src="~/Content/Images/File.png" />Add Files</button>
+        <button id="AddDirectoryButton" class="Green" data-not-supported-tooltip="Folder uploads are only supported in chrome"><img src="~/Content/Images/Directory.png" />Add Folder</button>
+        <button id="RemoveAllButton" class="Red">Remove All</button>
+        <button id="RemoveSelectedButton" class="Red">Remove Selected</button>
+        <div class="Hidden">
+            <input type="file" id="DirectoryInput" webkitdirectory="" directory="" mozdirectory="" />
+            <input type="file" id="FilesInput" multiple="" />
+        </div>
+    </div>
+    <div class="HorizontalSeperator"></div>
+
+    @{ 
+        Html.RenderPartial("~/Views/Shared/Transcoding/DataList.cshtml", "InputDataList");  
+    }
+
+    <div id="DataListDragDataArea" class="DragDataArea">
+        Drag and drop files here.
+    </div>
+
+    @{ 
+        Html.RenderPartial("~/Views/Shared/Transcoding/ErrorDialog.cshtml", "ChooseDataErrorDialog");  
+    }
+</div>

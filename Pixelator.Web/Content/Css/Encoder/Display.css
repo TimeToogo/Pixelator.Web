@@ -1,0 +1,6 @@
+﻿#DisplayImage > #EncodedImage {
+    margin: 10px auto;
+    display: block;
+    box-shadow: 0 0 3px;
+    border: 1px solid #fff;
+}

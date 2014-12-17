@@ -1,0 +1,287 @@
+﻿html,body {
+	width: 100%;
+}
+
+html {
+    overflow-y:scroll;
+}
+
+body {
+    background-color: #efefef;
+    color: #232323;
+    font-size: 12px;
+    font-family:  "Open Sans", Arial, Sans-Serif, "Segoe UI", Verdana, Helvetica;
+    margin: 0;
+}
+
+.Hidden {
+	display: none!important;
+}
+
+.Wrapper {
+    position:relative;
+    display:block;
+    clear:both;
+}
+
+.Fill {
+    width:100%;
+    height:100%;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+
+::selection {
+    background: #aaa;
+}
+
+.Container {
+    position:relative;
+    width:60%;
+    min-width: 600px;
+    max-width: 1000px;
+    height:100%;
+    margin: 0 auto;
+}
+
+header {
+    position: relative;
+	width: 100%;
+    background:linear-gradient(to top, #111 0%, #252525 100%);
+    box-shadow:#000 0 0 3px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    z-index:2;
+}
+
+    header #Logo {
+        height:100%;
+        display:inline-block;
+	    color: #ddd;
+	    text-shadow: -1px -1px #000;
+	    text-decoration: none;
+	    font-size: 20px;
+	    padding: 8px 15px 0 0;
+	    font-weight: bold;
+	    box-sizing: border-box;
+    }
+
+		header #Logo img {
+			opacity: 0.5;
+			box-shadow: 0 0 1px 1px #000 inset;
+		}
+
+    header #Subtitle {
+        display:block;
+	    font-size: 13px;
+	    line-height: 14px;
+	    font-weight: normal;
+    }
+
+    header a, header span {
+		color: #ddd;
+		font-size: 16px;
+    }
+
+    header nav {
+		display: inline-block;
+		height: 100%;
+		vertical-align: top;
+    }
+    
+		header nav a {
+			text-decoration: none;
+			display: inline-block;
+			height: 100%;
+			padding: 18px 15px;
+			margin-right: 3px;
+			box-sizing: border-box;
+			text-align: center;
+		}
+		
+		header nav a:hover {
+			color: #fff;
+			text-shadow: 1px 1px #000;
+			background: rgba(255,255,255,0.05);
+		}
+		
+		header nav a.active {
+			background: rgba(255,255,255,0.1);
+		}
+		
+	header .social {
+		display: inline-block;
+		height: 100%;
+		padding: 18px 0;
+		float: right;
+		opacity: 0.7;
+		transition: opacity .2s;
+	}
+
+	header .social:hover {
+		opacity: 0.9;
+	}
+
+		header .social > .twitter-share-button, header .social > .fb-like {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		header .social > .fb-like {
+			margin-right: 5px;
+		}
+
+		header .social > .twitter-share-button {
+			width: 80px !important;
+		}
+
+#Content {
+    margin-top:10px;
+    position:relative;
+    width:100%;
+    box-sizing:border-box;
+}
+
+    #Content > #ContentOverlay {
+        background-color: white;
+        background-image:url("/Content/Images/OverlaySpinner.gif");
+        background-position:center;
+        background-attachment:fixed;
+        background-repeat:no-repeat;
+    }
+
+    #Content > #ContentTitle {
+        font-size:30px;
+        font-weight:bold;
+        color:#666;
+        width:100%;
+        text-align:center;
+    }
+
+    #Content > .HorizontalSeperator {
+        width:100%;
+    }
+
+footer {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+    padding: 15px 0;
+	background-color: #1e1e1e;
+	z-index: 999;
+}
+
+footer #SiteBy {
+	padding: 0 15px;
+}
+footer #SiteBy, footer #SiteBy a {
+	color: #ddd;
+	font-size: 16px;
+}
+
+#BadBrowserOverlay {
+    z-index:3;
+    background-color:#aaa;
+    background-color:rgba(255, 255, 255, 0.65)!important;
+}
+    #BadBrowserOverlay.Hidden {
+        z-index:-3;
+    }
+
+#BadBroswerDialog {
+    position: fixed;
+    width: 50%;
+    top:50%;
+    left:50%;
+    margin-top:-100px;
+    margin-left:-25%;
+    z-index: 4;
+    padding: 20px;
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: #666 0 0 10px 5px;
+}
+
+    #BadBroswerDialog > #BadBrowserHeader{
+        color:#666;
+        font-size:24px;
+        font-weight:bolder;
+    }
+
+    #BadBroswerDialog > #BadBrowserContent{
+        color:#999;
+        font-size:16px;
+    }
+
+    #BadBroswerDialog > #BadBrowserContent a{
+        color:#aaa;
+    }
+
+.FadeEffect
+{
+    z-index:10;
+    opacity:1;
+    transition:opacity .5s;
+}
+
+    .FadeEffect.Hidden {
+        display:block!important;
+        opacity:0;
+        z-index:-10;
+        transition:opacity .5s 0s ease-in-out, z-index 0s .5s;
+    }
+
+.Overlay {
+    position: fixed;
+    cursor: default;
+    user-select: none;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    opacity:1;
+    z-index:1;
+    transition:opacity .5s;
+}
+
+    .Overlay.Hidden {
+        display:block!important;
+        opacity:0;
+        z-index:-1;
+        transition:opacity .5s ease-in-out, z-index 0 .5s;
+    }
+
+.VerticalSeperator, .HorizontalSeperator {
+    background-color:#aaa;
+	margin: 3px 0;
+}
+
+    .VerticalSeperator {
+        width:1px;
+    }
+
+    .HorizontalSeperator {
+        height:1px;
+		width: 100%;
+    }
+
+    .HorizontalSeperator.Padded, .VerticalSeperator.Padded {
+        margin-top:5px;
+        margin-bottom:5px;
+    }
+
+.ClearFix:before, .ClearFix:after {
+    content:"";
+    display:table;
+}
+
+    .ClearFix:after {
+        clear:both;
+    }
+
+@media screen and (max-width: 600px) {
+	.Container {
+		min-width: 100%;
+		width: 100%;
+	}
+}

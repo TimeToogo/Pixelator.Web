@@ -1,0 +1,33 @@
+﻿.ErrorDialog {
+    position:fixed;
+    z-index:2;
+    width:30%;
+    top:40%;
+    left:50%;
+    margin-left:-15%;
+    border-radius:5px;
+    padding:10px;
+    background:#ffffff;
+    box-shadow:#aaa 0 0 3px 2px;
+}
+
+    .ErrorDialog > div {
+       width:100%;
+       text-align:center;
+       margin-top:10px;
+    }
+
+    .ErrorDialog > .ErrorHeader {
+       color:#666;
+       font-size:24px;
+    }
+    
+    .ErrorDialog > .ErrorMessage {
+       color:#999;
+       font-size:20px;
+    }
+
+    .ErrorDialog > .ErrorButtons > .OKButton {
+       width:50%;
+       font-size:16px;
+    }

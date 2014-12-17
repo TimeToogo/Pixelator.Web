@@ -1,0 +1,19 @@
+﻿.Navigation.TwoWay .Left {
+    float:left;
+}
+
+.Navigation.TwoWay .Right {
+    float:right;
+}
+
+.Navigation.TwoWay .NavigationHolder {
+    display:inline;
+    width:48%;
+    box-sizing:border-box;
+}
+
+.Navigation.TwoWay > .VerticalSeperator {
+    height:350px;
+    position:absolute;
+    left:50%;
+}

@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Specify your image";
+}
+
+<div id="ChooseImage" class="Fill">
+    <div id="DataControls">
+        <button id="ChooseImageButton" class="Green"><img src="~/Content/Images/File.png" />Specify Image</button>
+        <button id="RemoveImageButton" class="Red">Remove Image</button>
+        <div class="Hidden">
+            <input type="file" id="FileInput" accept="image/*"/>
+        </div>
+    </div>
+    <div class="HorizontalSeperator"></div>
+    
+    @{ 
+        Html.RenderPartial("~/Views/Shared/Transcoding/DataList.cshtml", "InputDataList");  
+    }
+
+    <div id="DataListDragDataArea" class="DragDataArea">
+        Drag and drop an image here.
+    </div>
+
+    @{ 
+        Html.RenderPartial("~/Views/Shared/Transcoding/ErrorDialog.cshtml", "ChooseImageErrorDialog");  
+    }
+
+</div>

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Create a picture";
+}
+
+<div id="EncoderBody" class="TranscodingBody Fill">
+    <div id="EncoderHeader" class="TranscodingHeader">
+        <div id="EncoderContentTitle" class="TranscodingContentTitle"></div>
+        <div id="EncoderNavigation" class="TranscodingNavigation">
+            <button id="BackButton" class="NavigationButton Blue">Back</button>
+            <button id="ContinueButton" class="NavigationButton Blue">Continue</button>
+        </div>
+        <div class="HorizontalSeperator"></div>
+    </div>
+
+    <div id="EncoderContent" class="TranscodingContent">
+        <div class="Wrapper">
+        </div>
+    </div>
+</div>
+
+@section css {
+    @Styles.Render("~/Bundles/Css/Common/Transcoding")
+}
+
+@section scripts {
+    @Scripts.Render("~/Bundles/Js/Common/Transcoding")
+    @Scripts.Render("~/Bundles/Js/Encoder")
+}

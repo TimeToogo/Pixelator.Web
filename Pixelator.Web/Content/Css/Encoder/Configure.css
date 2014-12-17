@@ -1,0 +1,35 @@
+﻿#ConfigureImage {
+	margin-top: 5px;
+}
+
+#ConfigureImage #StandardConfiguration {
+    height:100%;
+}
+
+    #ConfigureImage #StandardConfiguration > #FileNameInput {
+        color:#666;
+        font-size:26px;
+        width:100%;
+    }
+
+#ConfigureImage #AdvancedConfigurationHeader {
+    margin-top: 20px;
+}
+
+#ConfigureImage #AdvancedConfiguration div.Input {
+    margin-top:10px;
+}
+
+#ConfigureImage #AdvancedConfiguration label, #AdvancedConfiguration select {
+    display:inline-block;
+    font-size:16px;
+    color:#666;
+}
+
+#ConfigureImage #AdvancedConfiguration label {
+    width:200px;
+}
+
+#ConfigureImage #AdvancedConfiguration select {
+    width:150px;
+}

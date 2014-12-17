@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Download your data";
+}
+
+<div id="ChooseDownloads" class="Fill">
+    <div id="DataControls">
+        <button id="DownloadAllButton" class="Green">Download All</button>
+        <button id="DownloadSelectedButton" class="Green">Dowload Selected</button>
+    </div>
+    <div class="HorizontalSeperator"></div>
+
+    @{ 
+        Html.RenderPartial("~/Views/Shared/Transcoding/DataList.cshtml", "DownloadDataList");  
+    }
+    
+    <div id="DownloadingOverlay" class="Overlay Hidden"></div>
+    <div id="DownloadingDialog" class="Hidden">
+        <div id="DownloadingMessage">
+            Beginning download, please wait
+        </div>
+        <div id="DownloadingProgressBar"></div>
+    </div>
+    
+    <div id="NoDownloadWarningOverlay" class="Overlay Hidden"></div>
+    <div id="NoDownloadWarningDialog" class="Hidden">
+        <div id="NoDownloadWarningMessage">
+            You have not downloaded your data, are your sure you want to proceed?
+        </div>
+        <div class="Buttons">
+            <button class="YesButton">Yes</button>
+            <button class="NoButton">No</button>
+        </div>
+    </div>
+    
+    <div class="Hidden">
+        <iframe id="DownloadIFrame" name="DownloadIFrame"></iframe>
+    </div>
+</div>

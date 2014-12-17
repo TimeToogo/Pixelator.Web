@@ -1,0 +1,74 @@
+﻿.DataList {
+    margin:0;
+    list-style: none;
+}
+
+    .DataList .ui-selecting {
+	    background:#ccc;
+    }
+
+    .DataList .ui-selected {
+	    background:#bcbcbc;
+    }
+
+     .DataList li.Directory {
+        list-style: url("/Content/Images/Directory.png")
+    }
+
+     .DataList li.Directory.Open {
+        list-style: url("/Content/Images/DirectoryOpen.png")
+    }
+
+     .DataList li.File {
+        list-style: url("/Content/Images/File.png")
+    }
+
+.DataList li div.Seperator {
+    height:1px;
+    background-color:#d9d9d9;
+    position:absolute;
+    width:100%;
+    left:0;
+    right:0;
+}
+
+.DataList li div.Display {
+    color:#666;
+    font-size:16px;
+    padding: 5px;
+    cursor:pointer;
+}
+
+    .DataList li div.Display span.FileName {
+        margin-right:150px;
+    }
+
+    .DataList li div.Display span.MetaData {
+        color:#666;
+        float:right;
+        position:absolute;
+        right:5px;
+    }
+	
+#DataListDragDataArea {
+    width:30%;
+    margin:50px auto;
+}
+
+.DragDataArea {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    padding: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: 3px #ccc dashed;
+    color: #ccc;
+    box-shadow: none;
+    transition: box-shadow .5s;
+    z-index: -1;
+}
+    .DragDataArea.DragHover {
+        box-shadow:#aaa 0 0 5px 5px inset, #ccc 0 0 0 10px;
+    }

@@ -1,0 +1,43 @@
+﻿#ChooseData #DataControls button {
+    font-size:16px;
+    height:34px;
+}
+    #ChooseData #DataControls button img {
+		vertical-align: text-top;
+		margin-right: 3px;
+    }
+
+#ChooseData #DataControls #AddFilesButton, #DataControls #AddDirectoryButton {
+    margin-right:3px;
+}
+
+#ChooseData #DataControls #RemoveSelectedButton, #ChooseData #DataControls #RemoveAllButton {
+    float:right;
+}
+
+#ChooseData #DataControls #RemoveAllButton {
+	margin-left: 3px;
+}
+
+#ChooseData #DataControls {
+    margin: 4px 0;
+}
+
+#ChooseData #ChooseData > .HorizontalSeperator, #DataList > .HorizontalSeperator {
+	margin-bottom: 0;
+}
+
+#ChooseData #DataListHeader span {
+    font-size:20px;
+    color:#808080;
+}
+
+#ChooseData #DataListHeader #DataListHeaderSize {
+    float:right;
+}
+
+@media screen and (max-width: 600px) {
+	#ChooseData #DataControls button:disabled {
+		display: none;
+	}
+}
