@@ -23,6 +23,10 @@
     margin: 4px 0;
 }
 
+	#ChooseData #DataControls > button {
+		vertical-align: top;
+	}
+
 #ChooseData #ChooseData > .HorizontalSeperator, #DataList > .HorizontalSeperator {
 	margin-bottom: 0;
 }

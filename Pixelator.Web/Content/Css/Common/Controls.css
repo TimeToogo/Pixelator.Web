@@ -28,7 +28,7 @@ button {
     background: linear-gradient(to top, #999 0%, #bbb 100%);
 }
 
-button:hover:not([disabled]) {
+	button:hover:not([disabled]) {
         background: -moz-linear-gradient(to top, #777 0%, #999 100%);
         background: linear-gradient(to top, #777 0%, #999 100%);
     }
