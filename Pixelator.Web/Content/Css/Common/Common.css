@@ -279,6 +279,11 @@ footer #SiteBy, footer #SiteBy a {
         clear:both;
     }
 
+.CenterMessage {
+	text-align: center;
+	font-size: 16px;
+}
+
 @media screen and (max-width: 600px) {
 	.Container {
 		min-width: 100%;

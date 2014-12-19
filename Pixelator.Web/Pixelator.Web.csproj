@@ -173,6 +173,7 @@
     <Compile Include="Controllers\Api\DecoderController.cs" />
     <Compile Include="Controllers\Api\TranscoderController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\DecoderController.cs" />
     <Compile Include="Controllers\EncoderController.cs" />
     <Compile Include="Controllers\Api\EncoderController.cs" />
@@ -300,6 +301,7 @@
     <Content Include="Scripts\Encoder\Display.js" />
     <Content Include="Scripts\Encoder\Index.js" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Hostgator.pubxml" />
     <None Include="Scripts\Referenced\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\Referenced\jquery-1.9.1.js" />
     <Content Include="Scripts\Referenced\jquery-1.9.1.min.js" />
@@ -328,6 +330,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\Referenced\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\SocialMediaButtons.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
