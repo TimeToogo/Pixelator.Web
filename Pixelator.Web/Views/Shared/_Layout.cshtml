@@ -16,11 +16,13 @@
     @RenderSection("scripts", false)
 </head>
 <body>
+@RenderPage("Analytics.cshtml")
+
 <header class="ClearFix">
     <div class="Container">
         <a id="Logo" href="@Url.Action("Index", "Encoder")">
             Pixelator.io
-            <img src="~/Content/Images/Logo.png" alt="Logo" />
+            <img src="~/Content/Images/Logo.png" alt="Logo"/>
             <span id="Subtitle">Secure data in pictures</span>
         </a>
         <nav>
