@@ -42,9 +42,9 @@ namespace Pixelator.Web.Controllers.Api
         }
 
         [HttpGet]
-        public void CleanOldJobs()
+        public void CleanOldJobs(string key)
         {
-            if (!Request.IsLocal())
+            if (key != WebConfigurationManager.AppSettings["ScheduledTaskKey"])
             {
                 throw new HttpResponseException(HttpStatusCode.Forbidden);
             }
