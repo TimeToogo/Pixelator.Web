@@ -227,7 +227,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Common\Container.js" />
     <Content Include="Scripts\Common\SiteContainer.js" />
@@ -251,7 +250,7 @@
     <Content Include="Scripts\Encoder\Display.js" />
     <Content Include="Scripts\Encoder\Index.js" />
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\Hostgator.pubxml" />
+    <None Include="Properties\PublishProfiles\pixelator.io - Web Deploy.pubxml" />
     <None Include="Scripts\Referenced\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\Referenced\jquery-1.9.1.js" />
     <Content Include="Scripts\Referenced\jquery-1.9.1.min.js" />
