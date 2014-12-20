@@ -21,7 +21,7 @@
     DecoderContainer.DefineStep("/Decoder/Decode", "Decoding your image", false, false);
     DecoderContainer.DefineStep("/Decoder/ChooseDownloads", "Download your data", false, true);
 
-    DecoderContainer.DefineCompletePage("/Decoder/");
+    DecoderContainer.DefineCompletePage("/decoder/");
 
     DecoderContainer.LoadStep(DecoderContainer.Steps[0]);
 });

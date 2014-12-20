@@ -22,7 +22,7 @@
     EncoderContainer.DefineStep("/Encoder/Create", "Creating your image", false, false);
     EncoderContainer.DefineStep("/Encoder/Display", "Here's your image", false, true);
 
-    EncoderContainer.DefineCompletePage("/Encoder/");
+    EncoderContainer.DefineCompletePage("/encoder/");
 
     EncoderContainer.LoadStep(EncoderContainer.Steps[0]);
     
