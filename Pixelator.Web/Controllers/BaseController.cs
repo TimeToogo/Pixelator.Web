@@ -2,6 +2,9 @@
 
 namespace Pixelator.Web.Controllers
 {
+#if!DEBUG
+    [RequireHttps]
+#endif
     public abstract class BaseController : Controller
     {
         protected ViewResult AjaxView()

@@ -5,9 +5,13 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Web.Configuration;
 using System.Web.Http;
+using Pixelator.Web.Filters;
 
 namespace Pixelator.Web.Controllers.Api
 {
+#if!DEBUG
+    [RequireHttps]
+#endif
     public abstract class TranscoderController : ApiController
     {
         protected abstract DirectoryInfo JobDirectory { get; }
