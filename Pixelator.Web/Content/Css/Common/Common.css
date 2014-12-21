@@ -284,17 +284,23 @@ footer #SiteBy, footer #SiteBy a {
 	font-size: 16px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
+
 	header .social {
 		display: none;
 	}
 
+}
+
+@media screen and (max-width: 600px) {
+
 	.Container {
-		min-width: 100%;
-		width: 99%;
+		min-width: 97%;
+		width: 97%;
 	}
 	
 	footer {
 		display: none;
 	}
+
 }

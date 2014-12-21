@@ -77,9 +77,6 @@
         LoadCompletePage = function() {
             Container.Complete();
         };
-        IsIOS = function() {
-            return (navigator.userAgent.match(/(iPod|iPhone|iPad)/));
-        };
 
         Container.CurrentPageIsValid = function() {
             return Completed;

@@ -452,12 +452,18 @@
         });
 
         //Bind the remove selected button to respective method
-        $("#RemoveSelectedButton").click(RemoveSelectedData);
+        var RemoveSelectedButton = $("#RemoveSelectedButton");
+        RemoveSelectedButton.click(RemoveSelectedData);
         $("#RemoveAllButton").click(function () {
             Files = [];
             Directories = [];
             UpdateDataList();
         });
+
+        if (IsIOS()) {
+            FileInput.removeAttr("multiple");
+            RemoveSelectedButton.addClass("Hidden");
+        }
 
         //Update data list, might have previously entered data
         UploadDataList.Update(Files, Directories);

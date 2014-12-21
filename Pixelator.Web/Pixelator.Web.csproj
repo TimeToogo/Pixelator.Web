@@ -230,6 +230,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Common\Container.js" />
+    <Content Include="Scripts\Common\Helpers.js" />
     <Content Include="Scripts\Common\SiteContainer.js" />
     <Content Include="Scripts\Common\Transcoding\Ajax\AjaxUtes.js" />
     <Content Include="Scripts\Common\Transcoding\Entities.js" />
