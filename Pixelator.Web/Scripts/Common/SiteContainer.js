@@ -17,7 +17,6 @@ $(document).ready(function () {
     var Container = new AjaxContainer(ContentElement, OverlayElement, TitleElement);
     window.onpopstate = Container.LoadHistoryState;
     Container.PageTitlePrefix = document.title + " - ";
-    Container.StoreHistoryState(undefined, document.title, window.location.pathname);
 
     window.SiteContainer = Container;
 });
