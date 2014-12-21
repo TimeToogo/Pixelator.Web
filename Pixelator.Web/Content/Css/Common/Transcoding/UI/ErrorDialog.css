@@ -31,3 +31,12 @@
        width:50%;
        font-size:16px;
     }
+
+@media screen and (max-width: 600px) {
+
+	.ErrorDialog {
+		width:250px;
+		margin-left:-125px;
+	}
+
+}
