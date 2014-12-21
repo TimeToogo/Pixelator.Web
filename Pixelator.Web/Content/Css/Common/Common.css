@@ -302,5 +302,14 @@ footer #SiteBy, footer #SiteBy a {
 	footer {
 		display: none;
 	}
+	
+	header .Container > * {
+		width: 100%;
+		text-align: center;
+	}
+
+	header #Logo {
+		margin-bottom: 5px;
+	}
 
 }
