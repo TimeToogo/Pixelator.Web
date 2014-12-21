@@ -45,3 +45,7 @@
         .Steps > li > p {
             display:inline-block;
         }
+
+#SiteBy a {
+   color:#888;
+}
