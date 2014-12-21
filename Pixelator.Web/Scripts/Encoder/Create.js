@@ -47,7 +47,7 @@
             });
 
             var ErrorCallbackWrapper = function() {
-                ErrorCallback("An unexpected error occured encoding your data");
+                ErrorCallback("An unexpected error occured while encoding your data");
             }
 
             $.ajax({
