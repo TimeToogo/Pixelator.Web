@@ -9,6 +9,8 @@
     this.FileName = undefined;
 
     this.Password = undefined;
+
+    this.EmbeddedImage = undefined;
 }
 
 DecodingJob = function () {

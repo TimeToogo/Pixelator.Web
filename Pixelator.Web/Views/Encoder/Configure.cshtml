@@ -7,6 +7,23 @@
         <input type="text" id="FileNameInput" placeholder="File Name:"/>
     </div>
 
+    <div id="DataControls" class="ChooseImageControls">
+        <button id="ChooseImageButton" class="Green"><img src="~/Content/Images/File.png" />Specify Embedded Image</button>
+        <button id="RemoveImageButton" class="Red">Remove Image</button>
+        <div class="Hidden">
+            <input type="file" id="FileInput" accept="image/*" />
+        </div>
+    </div>
+    <div class="HorizontalSeperator"></div>
+
+    @{
+        Html.RenderPartial("~/Views/Shared/Transcoding/DataList.cshtml", "ImageInputDataList");
+    }
+
+    <div id="DataListDragDataArea" class="DragDataArea">
+        Drag and drop an image here.
+    </div>
+
     <div id="AdvancedConfigurationHeader">
         <div class="HorizontalSeperator"></div>
         <button id="AdvancedConfigurationButton">Advanced</button>

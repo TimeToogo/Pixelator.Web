@@ -146,6 +146,7 @@
     <Content Include="Content\Css\Common\Common.css" />
     <Content Include="Content\Css\Common\Controls.css" />
     <Content Include="Content\Css\Common\Transcoding\Index.css" />
+    <Content Include="Content\Css\Common\Transcoding\UI\ImageInputDataList.css" />
     <Content Include="Content\Css\Common\Transcoding\UI\DataList.css" />
     <Content Include="Content\Css\Common\Transcoding\UI\ErrorDialog.css" />
     <Content Include="Content\Css\Decoder\ChooseDownloads.css" />

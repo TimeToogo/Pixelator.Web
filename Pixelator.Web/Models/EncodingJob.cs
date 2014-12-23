@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using Pixelator.Api;
 using Directory = Pixelator.Api.Input.Directory;
@@ -16,6 +17,7 @@ namespace Pixelator.Web.Models
         }
 
         public ImageFormat Format { get; set; }
+        public EmbeddedImage EmbeddedImage { get; set; }
 
         public string FileName
         {

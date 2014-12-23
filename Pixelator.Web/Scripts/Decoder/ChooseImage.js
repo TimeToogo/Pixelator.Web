@@ -13,28 +13,16 @@
 
         var InputDataList = new DataList($("#InputDataList"));
 
-        TriggerFileInput = function(FileInput) {
-            FileInput.show();
-            FileInput.focus();
-            FileInput.click();
-            FileInput.hide();
-        }
-
         HandleFileInput = function(Files) {
             Container.ShouldWarnUserLeaving(true);
             
             if (Files[0] != undefined) {
                 ImageFile = File.FromFileData(Files[0]);
-                UpdataDataList();
+                UpdateDataList();
             }
         }
 
-        ResetFormElement = function(Element) {
-            Element.wrap('<form>').closest('form').get(0).reset();
-            Element.unwrap();
-        }
-
-        UpdataDataList = function() {
+        UpdateDataList = function () {
             var Files = (ImageFile == undefined) ? [] : [ImageFile];
             InputDataList.Update(Files, []);
         }
@@ -54,22 +42,10 @@
             DecodingJob.ImageFile = ImageFile;
         };
 
-        UpdataDataList();
+        UpdateDataList();
 
-        var DragChanged = function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            if (e.type === "dragover")
-                DataListDragDataArea.addClass("DragHover");
-            else
-                DataListDragDataArea.removeClass("DragHover");
-        }
-        var DrageAreaDomElement = DataListDragDataArea.get(0);
-        DrageAreaDomElement.addEventListener("dragover", DragChanged);
-        DrageAreaDomElement.addEventListener("dragleave", DragChanged);
-        DrageAreaDomElement.addEventListener("drop", function (e) {
+        SetUpDropZone(DataListDragDataArea, function (e) {
             HandleFileInput(e.target.files || e.dataTransfer.files);
-            DragChanged(e);
         });
 
         FileInput.change(function() {
@@ -82,7 +58,7 @@
 
         RemoveImageButton.click(function() {
             ImageFile = undefined;
-            UpdataDataList();
+            UpdateDataList();
         });
     });
 });

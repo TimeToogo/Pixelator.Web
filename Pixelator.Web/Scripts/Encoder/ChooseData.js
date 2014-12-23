@@ -313,19 +313,7 @@
         UpdateDataList = function() {
             UploadDataList.Update(Files, Directories);
         }
-
-        TriggerFileInput = function(FileInput) {
-            FileInput.show();
-            FileInput.focus();
-            FileInput.click();
-            FileInput.hide();
-        }
-
-        ResetFormElement = function(Element) {
-            Element.wrap('<form>').closest('form').get(0).reset();
-            Element.unwrap();
-        }
-
+        
         RemoveFromArray = function(RemoveArray, SourceArray) {
             var NewArray = [];
             for (var i = 0; i < SourceArray.length; i++) {
@@ -433,23 +421,7 @@
             AddDirectoryButton.attr("title", AddDirectoryButton.attr("data-not-supported-tooltip"));
         }
 
-        //Bind the drag and drop data area to appropriate event handlers
-        var DragChanged = function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            if (e.type === "dragover")
-                DataListDragDataArea.addClass("DragHover");
-            else
-                DataListDragDataArea.removeClass("DragHover");
-        }
-
-        var DrageAreaDomElement = DataListDragDataArea.get(0);
-        DrageAreaDomElement.addEventListener("dragover", DragChanged);
-        DrageAreaDomElement.addEventListener("dragleave", DragChanged);
-        DrageAreaDomElement.addEventListener("drop", function(e) {
-            HandleDroppedData(e);
-            DragChanged(e);
-        });
+        SetUpDropZone(DataListDragDataArea, HandleDroppedData);
 
         //Bind the remove selected button to respective method
         var RemoveSelectedButton = $("#RemoveSelectedButton");

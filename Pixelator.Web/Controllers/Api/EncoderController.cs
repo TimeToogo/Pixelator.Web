@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -62,7 +63,7 @@ namespace Pixelator.Web.Controllers.Api
                     encodingJob.CompressionLevel);
             }
 
-            var imageEncoder = new ImageEncoder(encodingJob.Format, encryptionConfiguration, compressionConfiguration);
+            var imageEncoder = new ImageEncoder(encodingJob.Format, encryptionConfiguration, compressionConfiguration, encodingJob.EmbeddedImage);
             imageEncoder.AddDirectories(encodingJob.Directories);
 
             imageEncoder.Metadata.Add("creation-date", DateTime.UtcNow.ToString("s", CultureInfo.InvariantCulture));
@@ -149,7 +150,7 @@ namespace Pixelator.Web.Controllers.Api
 
             encodingJob.FileName = form["file-name"];
             encodingJob.Password = form["password"];
-            encodingJob.Format = (ImageFormat) Enum.Parse(typeof (ImageFormat), form["image-format"]);
+            encodingJob.Format = (ImageFormat)Enum.Parse(typeof(ImageFormat), form["image-format"]);
             encodingJob.EncryptionAlgorithm = encodingJob.HasPassword ? (EncryptionType)Enum.Parse(typeof(EncryptionType), form["encryption-algorithm"]) : (EncryptionType?) null;
             encodingJob.CompressionAlgorithm = ParseNullableEnum<CompressionType>(form["compression-algorithm"]);
             encodingJob.CompressionLevel = (CompressionLevel) Enum.Parse(typeof (CompressionLevel), form["compression-level"]);
@@ -162,8 +163,19 @@ namespace Pixelator.Web.Controllers.Api
 
             Dictionary<string, List<File>> directories = directoryInput.ToDictionary(directory => directory, directory => new List<File>());
 
+            KeyValuePair<string, Stream> embeddedImageUpload = provider.FileStreams.First(file => file.Key == "embedded-image");
+            if (embeddedImageUpload.Key != null)
+            {
+                var pixelStorage = (EmbeddedImage.PixelStorage)Enum.Parse(typeof(EmbeddedImage.PixelStorage), form["pixel-storage-level"]);
+                encodingJob.EmbeddedImage = new EmbeddedImage(Image.FromStream(embeddedImageUpload.Value), pixelStorage);
+            }
+
             foreach (var file in provider.FileStreams)
             {
+                if (file.Key == "embedded-image")
+                {
+                    continue;
+                }
                 var key = file.Key;
                 var name = form[key + ".name"];
                 var directory = form[key + ".directory"];

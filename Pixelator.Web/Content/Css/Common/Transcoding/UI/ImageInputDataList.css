@@ -1,0 +1,30 @@
+﻿.ChooseImageControls button {
+    font-size:16px;
+    height:34px;
+}
+    .ChooseImageControls button img {
+		vertical-align: text-top;
+		margin-right: 3px;
+    }
+
+.ChooseImageControls #RemoveImageButton {
+    float:right;
+}
+
+.ChooseImageControls {
+    margin: 4px 0;
+}
+
+.ChooseImageControls + .HorizontalSeperator, .ChooseImageControls ~ #DataList > .HorizontalSeperator {
+	margin-bottom: 0;
+}
+
+.ChooseImageControls ~ #DataList #DataListHeader span {
+    font-size:20px;
+    color:#808080;
+}
+
+.ChooseImageControls ~ #DataList #DataListHeader #DataListHeaderSize {
+    float:right;
+}
+

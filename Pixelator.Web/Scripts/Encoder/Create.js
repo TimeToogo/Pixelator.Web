@@ -35,6 +35,7 @@
             formData.append("encryption-algorithm", EncodingJob.TranscodingConfiguration.EncryptionAlgorithm);
             formData.append("compression-algorithm", EncodingJob.TranscodingConfiguration.CompressionAlgorithm);
             formData.append("compression-level", EncodingJob.TranscodingConfiguration.CompressionLevel);
+            formData.append("embedded-image", EncodingJob.EmbeddedImage.Data);
 
             $.each(EncodingJob.RelativeDirectories, function(index, directory) {
                 formData.append("directories[]", directory.Path);
