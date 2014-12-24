@@ -3,16 +3,9 @@
         var Container = window.EncoderContainer;
         var Password = Container.TranscodingJob.Password;
         var FileName = Container.TranscodingJob.FileName;
-        var EmbeddedImage = Container.TranscodingJob.EmbeddedImage;
         var Configuration = Container.TranscodingJob.TranscodingConfiguration;
 
         var ErrorDialog = new TranscodingErrorDialog($("#ConfigureImageErrorDialog"));
-
-        var ChooseImageButton = $("#ChooseImageButton");
-        var RemoveImageButton = $("#RemoveImageButton");
-        var FileInput = $("#FileInput");
-        var DataListDragDataArea = $("#DataListDragDataArea");
-        var InputDataList = new DataList($("#ImageInputDataList"));
 
         var AllConfiguration = $("#AdvancedConfiguration");
         var EncryptionConfiguration = $("#EncryptionConfiguration");
@@ -22,18 +15,7 @@
         var CompressionLevelSelect = $("#CompressionLevel");
         var CompressionAlgorithmSelect = $("#CompressionAlgorithm");
         var EncryptionAlgorithmSelect = $("#EncryptionAlgorithm");
-
-        HandleFileInput = function (Files) {
-            if (Files[0] != undefined) {
-                EmbeddedImage = File.FromFileData(Files[0]);
-                UpdateDataList();
-            }
-        }
-
-        UpdateDataList = function () {
-            var Files = (EmbeddedImage == undefined) ? [] : [EmbeddedImage];
-            InputDataList.Update(Files, []);
-        }
+        var PixelStorageLevelSelect = $("#PixelStorageLevel");
 
         Container.CurrentPageIsValid = function() {
             if (FileName != undefined && FileName.length !== 0) {
@@ -50,25 +32,9 @@
         Container.SaveToJob = function(EncodingJob) {
             EncodingJob.FileName = FileName;
             EncodingJob.TranscodingConfiguration = Configuration;
-            EncodingJob.EmbeddedImage = EmbeddedImage;
         };
 
         UpdateDataList();
-
-        SetUpDropZone(DataListDragDataArea, function (e) {
-            HandleFileInput(e.target.files || e.dataTransfer.files);
-        });
-        FileInput.change(function() {
-            HandleFileInput($(this).prop("files"));
-            ResetFormElement($(this));
-        });
-        ChooseImageButton.click(function() {
-            TriggerFileInput(FileInput);
-        });
-        RemoveImageButton.click(function() {
-            EmbeddedImage = undefined;
-            UpdateDataList();
-        });
 
         var FileNameInput = $("#FileNameInput");
         FileNameInput.val(FileName);
@@ -85,10 +51,29 @@
 
         if (Configuration.ImageFormat != undefined)
             ImageFormatSelect.val(Configuration.ImageFormat);
-        else
-            Configuration.ImageFormat = ImageFormatSelect.val();
+        else {
+            var ImageFormatOptionValue = undefined;
+            if (Container.TranscodingJob.EmbeddedImage != undefined) {
+                var ImageFormat = Container.TranscodingJob.EmbeddedImage.Name.split(".").pop().toUpperCase();
+                var ImageFormatOptionValue = ImageFormatSelect.children("option").filter(function () {
+                    return this.value.toUpperCase() === ImageFormat;
+                }).attr("value");
+            }
+            ImageFormatOptionValue = ImageFormatOptionValue || ImageFormatSelect.children("option").first().attr("value");
+
+            Configuration.ImageFormat = ImageFormatOptionValue;
+            ImageFormatSelect.val(ImageFormatOptionValue);
+        }
         ImageFormatSelect.change(function() {
             Configuration.ImageFormat = ImageFormatSelect.val();
+        });
+
+        if (Configuration.PixelStorageLevel != undefined)
+            PixelStorageLevelSelect.val(Configuration.PixelStorageLevel);
+        else
+            Configuration.PixelStorageLevel = PixelStorageLevelSelect.val();
+        PixelStorageLevelSelect.change(function () {
+            Configuration.PixelStorageLevel = PixelStorageLevelSelect.val();
         });
 
         if (Configuration.CompressionLevel != undefined)

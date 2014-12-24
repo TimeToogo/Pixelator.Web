@@ -1,4 +1,5 @@
-﻿@{
+﻿@using System.Web.Configuration
+@{
     ViewBag.Title = "About";
 }
 
@@ -13,7 +14,7 @@
             <div class="Content">
                 <ul class="Steps">
                     <li>
-                        <p>Select the data that you want to store and optionally provide a password to securely encrypt your data.</p>
+                        <p>Select a cover picture, the data that you want to store and optionally provide a password to securely encrypt your data.</p>
                     </li>
                     <li>
                         <p>Download and save the picture containing the encoded data.</p>
@@ -23,6 +24,16 @@
                     </li>
                 </ul>
             </div>
+        </div>
+    </div>
+    <div class="Section">
+        <div class="Title">A note on security</div>
+        <div class="Content">
+            Pixelator.io is built with the security of your data in mind. Uploading and downloading of your data is done securely
+            over the internet under a HTTPS connection. Your data will not be stored in its raw format on our servers and the encoded
+            pictures are only stored for about @WebConfigurationManager.AppSettings["JobExpiryIntervalSeconds"] seconds to allow you to
+            download the results. If a password is provided, the encoded picture will contain your data in a secure encrypted form.
+            We currently use the AES encryption algorithm combined with strong password hashing to ensure your data is secure as possible.
         </div>
     </div>
     <div class="Section">

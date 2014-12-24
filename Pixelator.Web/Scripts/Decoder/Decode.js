@@ -31,35 +31,43 @@
             formData.append("image", DecodingJob.ImageFile.Data);
 
             $.ajax({
-                    url: "/api/Decoder/Structure",
-                    type: "post",
-                    dataType: "json",
-                    contentType: false,
-                    processData: false,
-                    data: formData,
-                    enctype: "multipart/form-data",
-                    xhr: function() {
-                        return XHRWithProgress(function() {
-                            UpdateStatus("Uploading", 0.1);
-                        }, function(percentComplete) {
-                            UpdateProgressBar(ProgressBarElement, percentComplete);
-                        }, function() {
-                            UpdateStatus("Decoding your data", false);
-                        });
-                    }
-                }).done(function(response) {
-                    DecodingJob.ID = response.id;
-                    $.each(response.files, function(key, fileInfo) {
-                        DecodingJob.Files.push(File.FromServerResponse(fileInfo));
+                url: "/api/Decoder/Structure",
+                type: "post",
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                data: formData,
+                enctype: "multipart/form-data",
+                xhr: function() {
+                    return XHRWithProgress(function() {
+                        UpdateStatus("Uploading", 0.1);
+                    }, function(percentComplete) {
+                        UpdateProgressBar(ProgressBarElement, percentComplete);
+                    }, function() {
+                        UpdateStatus("Decoding your data", false);
                     });
-                    $.each(response.directories, function(key, directoryInfo) {
-                        DecodingJob.RelativeDirectories.push(Directory.FromServerResponse(directoryInfo));
-                    });
+                }
+            }).done(function(response) {
+                DecodingJob.ID = response.id;
+                $.each(response.files, function(key, fileInfo) {
+                    DecodingJob.Files.push(File.FromServerResponse(fileInfo));
+                });
+                $.each(response.directories, function(key, directoryInfo) {
+                    DecodingJob.RelativeDirectories.push(Directory.FromServerResponse(directoryInfo));
+                });
 
-                    Completed = true;
-                    SuccessCallback();
-                })
-                .fail(function(xhr) { ErrorCallback(JSON.parse(xhr.responseText).reason); });
+                Completed = true;
+                SuccessCallback();
+            })
+            .fail(function (xhr) {
+                if (xhr.status === 404) {
+                    ErrorCallback(undefined, "An error occured while uploading your picture");
+                } else if (xhr.status === 400) {
+                    ErrorCallback(JSON.parse(xhr.responseText).reason);
+                } else {
+                    ErrorCallback(undefined, "An unknown error occured while attempting to decode your picture");
+                }
+            });
         };
 
         Container.CurrentPageIsValid = function() {
@@ -75,7 +83,8 @@
             Container.LoadNextStep();
         };
 
-        var TrancodingErrorCallback = function(Reason) {
+        var TrancodingErrorCallback = function (Reason, CustomMessage) {
+            
             var RedirectUrl;
             var Message;
             switch (Reason) {
@@ -90,6 +99,9 @@
             default:
                 RedirectUrl = "/Decoder/ChooseImage";
                 Message = "An error occurred while decoding your image";
+                if (CustomMessage) {
+                    Message = CustomMessage;
+                }
                 break;
             }
             var Redirect = function() {

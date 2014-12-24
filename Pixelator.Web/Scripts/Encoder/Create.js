@@ -35,7 +35,10 @@
             formData.append("encryption-algorithm", EncodingJob.TranscodingConfiguration.EncryptionAlgorithm);
             formData.append("compression-algorithm", EncodingJob.TranscodingConfiguration.CompressionAlgorithm);
             formData.append("compression-level", EncodingJob.TranscodingConfiguration.CompressionLevel);
-            formData.append("embedded-image", EncodingJob.EmbeddedImage.Data);
+            if (EncodingJob.EmbeddedImage != undefined) {
+                formData.append("embedded-image", EncodingJob.EmbeddedImage.Data);
+            }
+            formData.append("pixel-storage-level", EncodingJob.TranscodingConfiguration.PixelStorageLevel);
 
             $.each(EncodingJob.RelativeDirectories, function(index, directory) {
                 formData.append("directories[]", directory.Path);
@@ -46,10 +49,6 @@
                 formData.append("files[" + index + "].name", file.Name);
                 formData.append("files[" + index + "].directory", file.RelativePath);
             });
-
-            var ErrorCallbackWrapper = function() {
-                ErrorCallback("An unexpected error occured while encoding your data");
-            }
 
             $.ajax({
                 url: "/api/Encoder/Encode",
@@ -72,7 +71,9 @@
                 EncodingJob.ID = data.id;
                 SuccessCallback();
             })
-            .fail(ErrorCallbackWrapper);
+            .fail(function (xhr, status, error) {
+                ErrorCallback((xhr.status === 400 ? xhr.responseText : false) || "An unexpected error occured while encoding your data");
+            });
         };
 
         LoadCompletePage = function() {

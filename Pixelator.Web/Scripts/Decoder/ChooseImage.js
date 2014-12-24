@@ -23,13 +23,16 @@
         }
 
         UpdateDataList = function () {
-            var Files = (ImageFile == undefined) ? [] : [ImageFile];
-            InputDataList.Update(Files, []);
+            if (ImageFile != undefined) {
+                InputDataList.PrependRootFile(ImageFile, "Picture");
+            } else {
+                InputDataList.Update([], []);
+            }
         }
 
         Container.CurrentPageIsValid = function() {
             if (ImageFile == undefined)
-                return "Please specify your image";
+                return "Please specify your picture";
 
             return true;
         };

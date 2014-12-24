@@ -28,6 +28,8 @@ TranscodingConfiguration = function () {
 
     this.ImageFormat = undefined;
 
+    this.PixelStorageLevel = undefined;
+
     this.CompressionLevel = undefined;
 
     this.CompressionAlgorithm = undefined;

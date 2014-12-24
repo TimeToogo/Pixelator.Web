@@ -103,8 +103,7 @@
        
         //Add seperators
         DataListElement.find("div.Display").each(function () {
-            var SeperatorElement = CreateSeperatorElement();
-            $(this).after(SeperatorElement);
+            AddSeperatorElement($(this));
         });
        
         //Make items selectable
@@ -136,8 +135,8 @@
         });
     }
 
-    var CreateFileElement = function (File) {
-        FileElement = $("<li>").addClass("File").data("File", File)
+    var CreateFileElement = function (File, Class) {
+        FileElement = $("<li>").addClass("File " + Class).data("File", File)
             .append($("<div>").addClass("Display")
                 .append($("<span>").addClass("FileName").append(File.Name))
                 .append($("<span>").addClass("MetaData").append(SizeToApproxString(File.Length))));
@@ -154,6 +153,11 @@
 
         return DirectoryElement;
     }
+
+    var AddSeperatorElement = function(Element) {
+        var SeperatorElement = CreateSeperatorElement();
+        Element.after(SeperatorElement);
+    };
 
     var CreateSeperatorElement = function () {
         SeperatorElement = $("<div>").addClass("Seperator");
@@ -248,6 +252,12 @@
         });
 
         return SelectedDirectories;
+    }
+
+    this.PrependRootFile = function (File, Class) {
+        var FileElement = CreateFileElement(File, Class);
+        DataListElement.prepend(FileElement);
+        AddSeperatorElement(FileElement.find("div.Display"));
     }
 
     SelectSelectableElements = function (SelectableElementObject, Elements) {

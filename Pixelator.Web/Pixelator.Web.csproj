@@ -135,6 +135,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\BadRequestException.cs" />
     <Compile Include="Helpers\MultipartFormDataMemoryStreamProvider.cs" />
     <Compile Include="Models\DecodingJob.cs" />
     <Compile Include="Models\EncodingJob.cs" />
@@ -164,6 +165,7 @@
     <Content Include="Content\Images\File.png" />
     <Content Include="Content\Images\Logo.png" />
     <Content Include="Content\Images\OverlaySpinner.gif" />
+    <Content Include="Content\Images\Photo.png" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_ffffff_40x100.png" />

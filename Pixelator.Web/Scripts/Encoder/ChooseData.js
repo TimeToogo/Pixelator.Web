@@ -6,16 +6,25 @@
         var DataListDragDataArea = $("#DataListDragDataArea");
         var ErrorDialog = new TranscodingErrorDialog($("#ChooseDataErrorDialog"));
         var AddDirectoryButton = $("#AddDirectoryButton");
+        var SpecifyPicture = $("#SpecifyPicture");
 
         var IsChrome = /chrom(e|ium)/.test(navigator.userAgent.toLowerCase());
 
         var Files = Container.TranscodingJob.Files;
         var Directories = Container.TranscodingJob.RelativeDirectories;
+        var EmbeddedImage = Container.TranscodingJob.EmbeddedImage;
         var MaxUploadSize = 20971520;
         var MaxUploadString = "20MB";
         var MaxFilesLimit = 10000;
         var MaxDirectoriesLimit = 1000;
 
+        HandlePictureInput = function (Files) {
+            if (Files[0] != undefined) {
+                EmbeddedImage = File.FromFileData(Files[0]);
+                UpdateDataList();
+            }
+        }
+        
         HandleFileInput = function(NewFiles) {
             //Warn user leaving when they enter data
             Container.ShouldWarnUserLeaving(true);
@@ -241,7 +250,7 @@
             //If invalid rollback and display error
             var ValidationResult = (function() {
                 if (Files.length === 0 && Directories.length === 0)
-                    return "Please add at least one file";
+                    return "Please add at least one file to encode";
 
                 var FilesAmountResult = ValidateFileAmount(Files.length);
                 if (FilesAmountResult !== true)
@@ -278,6 +287,9 @@
                 var EmptyFilePath = false;
                 var FilePaths = [];
                 for (var FileKey in Files) {
+                    if (Files[FileKey] === EmbeddedImage) {
+                        continue;
+                    }
                     var FilePath = Files[FileKey].GetFullPath();
                     if ($.inArray(FilePath, FilePaths) !== -1)
                         DuplicateFile = true;
@@ -304,14 +316,24 @@
             var SelectedFiles = UploadDataList.GetSelectedFiles();
             Files = RemoveFromArray(SelectedFiles, Files);
 
+            for (var i = 0; i < SelectedFiles.length; i++) {
+                if (SelectedFiles[i] === EmbeddedImage) {
+                    EmbeddedImage = undefined;
+                    break;
+                }
+            }
+
             var SelectedDirectories = UploadDataList.GetSelectedDirectories();
             Directories = RemoveFromArray(SelectedDirectories, Directories);
 
-            UploadDataList.Update(Files, Directories);
+            UpdateDataList();
         }
 
         UpdateDataList = function() {
             UploadDataList.Update(Files, Directories);
+            if (EmbeddedImage != undefined) {
+                UploadDataList.PrependRootFile(EmbeddedImage, "Picture");
+            }
         }
         
         RemoveFromArray = function(RemoveArray, SourceArray) {
@@ -345,7 +367,7 @@
 
         Container.CurrentPageIsValid = function() {
             if (Files.length === 0 && Directories.length === 0)
-                return "Please add at least one file";
+                return "Please add at least one file to encode";
 
             var FilesAmountResult = ValidateFileAmount(Files.length);
             if (FilesAmountResult !== true)
@@ -399,7 +421,17 @@
         Container.SaveToJob = function(EncodingJob) {
             EncodingJob.Files = Files;
             EncodingJob.RelativeDirectories = Directories;
+            EncodingJob.EmbeddedImage = EmbeddedImage;
         };
+
+        var PictureInput = $("#PictureInput");
+        SpecifyPicture.click(function () {
+            TriggerFileInput(PictureInput);
+        });
+        PictureInput.change(function() {
+            HandlePictureInput($(this).prop("files"));
+            ResetFormElement($(this));
+        });
 
         //Bind file input buttons
         var FileInput = $("#FilesInput");
@@ -429,15 +461,15 @@
         $("#RemoveAllButton").click(function () {
             Files = [];
             Directories = [];
+            EmbeddedImage = undefined;
             UpdateDataList();
         });
 
         if (IsIOS()) {
             FileInput.removeAttr("multiple");
-            RemoveSelectedButton.addClass("Hidden");
         }
 
         //Update data list, might have previously entered data
-        UploadDataList.Update(Files, Directories);
+        UpdateDataList();
     });
 });

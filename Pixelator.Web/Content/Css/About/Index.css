@@ -2,19 +2,19 @@
     margin-top:15px;
 }
 
-    .Section > .Title{
-        color:#666;
-        font-size:24px;
+    .Section > .Title {
+        color:#777;
+        font-size:20px;
         font-weight:bolder;
     }
 
-    .Section > .Content{
+    .Section > .Content {
         margin-top:5px;
         color:#888;
         font-size:16px;
     }
 
-    .Section .Section > .Title{
+    .Section .Section > .Title {
         color:#777;
         font-size:20px;
         font-weight:bold;

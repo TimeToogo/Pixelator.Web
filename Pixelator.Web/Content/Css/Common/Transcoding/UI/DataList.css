@@ -18,9 +18,13 @@
      .DataList li.Directory.Open {
         list-style: url("/Content/Images/DirectoryOpen.png")
     }
-
+	 
      .DataList li.File {
         list-style: url("/Content/Images/File.png")
+    }
+	 
+     .DataList li.File.Picture {
+        list-style: url("/Content/Images/Photo.png")
     }
 
 .DataList li div.Seperator {

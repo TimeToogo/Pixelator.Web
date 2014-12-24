@@ -4,13 +4,17 @@
 
 <div id="ChooseData" class="Fill">
     <div id="DataControls" class="ClearFix">
+        <button id="SpecifyPicture" class="Green"><img src="~/Content/Images/Photo.png" />Specify Cover Picture</button>
         <button id="AddFilesButton" class="Green"><img src="~/Content/Images/File.png" />Add Files</button>
-        <button id="AddDirectoryButton" class="Green" data-not-supported-tooltip="Folder uploads are only supported in chrome"><img src="~/Content/Images/Directory.png" />Add Folder</button>
-        <button id="RemoveAllButton" class="Red">Remove All</button>
-        <button id="RemoveSelectedButton" class="Red">Remove Selected</button>
+        <button id="AddDirectoryButton" class="Green" data-not-supported-tooltip="Folder uploads are only supported in chrome"><img src="~/Content/Images/Directory.png"/>Add Folder</button>
+        <div id="RemoveButtons">
+            <button id="RemoveSelectedButton" class="Red">Remove Selected</button>
+            <button id="RemoveAllButton" class="Red">Remove All</button>
+        </div>
         <div class="Hidden">
             <input type="file" id="DirectoryInput" webkitdirectory="" directory="" mozdirectory="" />
             <input type="file" id="FilesInput" multiple="" />
+            <input type="file" id="PictureInput" accept="image/*" />
         </div>
     </div>
     <div class="HorizontalSeperator"></div>
@@ -20,7 +24,7 @@
     }
 
     <div id="DataListDragDataArea" class="DragDataArea">
-        Drag and drop files here.
+        Drag and drop files to encode in your picture here.
     </div>
 
     @{ 

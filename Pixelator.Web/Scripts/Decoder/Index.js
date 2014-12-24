@@ -16,7 +16,7 @@
     DecoderContainer.DefineNextStepButton($("#ContinueButton"));
     DecoderContainer.DefinePreviousStepButton($("#BackButton"));
 
-    DecoderContainer.DefineStep("/Decoder/ChooseImage", "Specify your image", false, true);
+    DecoderContainer.DefineStep("/Decoder/ChooseImage", "Specify your picture", false, true);
     DecoderContainer.DefineStep("/Decoder/ChoosePassword", "Specify your password", true, true);
     DecoderContainer.DefineStep("/Decoder/Decode", "Decoding your image", false, false);
     DecoderContainer.DefineStep("/Decoder/ChooseDownloads", "Download your data", false, true);

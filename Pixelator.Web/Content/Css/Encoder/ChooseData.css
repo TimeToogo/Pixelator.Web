@@ -1,6 +1,7 @@
 ﻿#ChooseData #DataControls button {
     font-size:16px;
     height:34px;
+	vertical-align: middle;
 }
     #ChooseData #DataControls button img {
 		vertical-align: text-top;
@@ -11,7 +12,7 @@
     margin-right:3px;
 }
 
-#ChooseData #DataControls #RemoveSelectedButton, #ChooseData #DataControls #RemoveAllButton {
+#ChooseData #DataControls #RemoveButtons {
     float:right;
 }
 
@@ -43,5 +44,11 @@
 @media screen and (max-width: 600px) {
 	#ChooseData #DataControls button:disabled {
 		display: none;
+	}
+
+	#ChooseData #DataControls #RemoveButtons {
+		float:none;
+		margin-top: 5px;
+		margin-left: 0;
 	}
 }
