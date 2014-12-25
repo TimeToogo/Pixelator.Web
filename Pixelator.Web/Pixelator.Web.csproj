@@ -136,6 +136,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\BadRequestException.cs" />
+    <Compile Include="Helpers\FileSize.cs" />
     <Compile Include="Helpers\MultipartFormDataMemoryStreamProvider.cs" />
     <Compile Include="Models\DecodingJob.cs" />
     <Compile Include="Models\EncodingJob.cs" />

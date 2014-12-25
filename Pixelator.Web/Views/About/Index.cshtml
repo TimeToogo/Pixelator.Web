@@ -1,4 +1,5 @@
 ﻿@using System.Web.Configuration
+@using Pixelator.Web.Helpers;
 @{
     ViewBag.Title = "About";
 }
@@ -34,6 +35,38 @@
             pictures are only stored for about @WebConfigurationManager.AppSettings["JobExpiryIntervalSeconds"] seconds to allow you to
             download the results. If a password is provided, the encoded picture will contain your data in a secure encrypted form.
             We currently use the AES encryption algorithm combined with strong password hashing to ensure your data is secure as possible.
+        </div>
+    </div>
+    <div class="Section">
+        <div class="Title">Current limitations:</div>
+        <div class="Content">
+            <table>
+                <tr>
+                    <th>Encoding Mode:</th>
+                    <th>Data Limit</th>
+                </tr>
+                <tr>
+                    <td>Without Cover Picture:</td>
+                    <td>@FileSize.Format(int.Parse(WebConfigurationManager.AppSettings["MaxDataSizeForRawStorage"]))</td>
+                </tr>
+                <tr>
+                    <td>High Pixel Storage (More distorted):</td>
+                    <td>@FileSize.Format(int.Parse(WebConfigurationManager.AppSettings["MaxDataSizeForHighPixelStorage"]))</td>
+                </tr>
+                <tr>
+                    <td>Medium Pixel Storage:</td>
+                    <td>@FileSize.Format(int.Parse(WebConfigurationManager.AppSettings["MaxDataSizeForMediumPixelStorage"]))</td>
+                </tr>
+                <tr>
+                    <td>Low Pixel Storage (Less distorted):</td>
+                    <td>@FileSize.Format(int.Parse(WebConfigurationManager.AppSettings["MaxDataSizeForLowPixelStorage"]))</td>
+                </tr>
+            </table>
+            <p>
+                <strong>Cover Picture Size Limit:</strong> @WebConfigurationManager.AppSettings["MaxEmbeddedPictureWidth"]
+                x
+                @WebConfigurationManager.AppSettings["MaxEmbeddedPictureHeight"]px
+            </p>
         </div>
     </div>
     <div class="Section">

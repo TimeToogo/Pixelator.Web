@@ -176,7 +176,7 @@ namespace Pixelator.Web.Controllers.Api
                 int maxFileSize = int.Parse(WebConfigurationManager.AppSettings["MaxEmbeddedPictureByteSize"]);
                 if (embeddedImageUpload.Value.Length > maxFileSize)
                 {
-                    throw new BadRequestException("The selected cover picture exceeds the maximum file size of " + maxFileSize / (1024 * 1024) + "MB");
+                    throw new BadRequestException("The selected cover picture exceeds the maximum file size of " + FileSize.Format(maxFileSize));
                 }
 
                 var pixelStorage = (EmbeddedImage.PixelStorage)Enum.Parse(typeof(EmbeddedImage.PixelStorage), form["pixel-storage-level"]);
@@ -222,7 +222,7 @@ namespace Pixelator.Web.Controllers.Api
                     : encodingJob.EmbeddedImage.EmbeddedPixelStorage);
             if (encodedFilesLength > maxEncodedDataSize)
             {
-                throw new BadRequestException("The selected files exceeds the maximum data size of " + maxEncodedDataSize / (1024 * 1024) + "MB for the specified configuration");
+                throw new BadRequestException("The selected files exceeds the maximum data size of " + FileSize.Format(maxEncodedDataSize) + " for the specified configuration");
             }
 
             return encodingJob;
