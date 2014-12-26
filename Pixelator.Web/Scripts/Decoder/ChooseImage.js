@@ -23,10 +23,9 @@
         }
 
         UpdateDataList = function () {
+            InputDataList.Update([], []);
             if (ImageFile != undefined) {
                 InputDataList.PrependRootFile(ImageFile, "Picture");
-            } else {
-                InputDataList.Update([], []);
             }
         }
 
