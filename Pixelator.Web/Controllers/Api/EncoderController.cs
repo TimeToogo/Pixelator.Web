@@ -186,7 +186,7 @@ namespace Pixelator.Web.Controllers.Api
                 var maxWidth = int.Parse(WebConfigurationManager.AppSettings["MaxEmbeddedPictureWidth"]);
                 if (encodingJob.EmbeddedImage.Image.Height > maxHeight || encodingJob.EmbeddedImage.Image.Width > maxWidth)
                 {
-                    throw new BadRequestException("The selected cover picture exceeds the maximum size of " + maxWidth + "x" + maxHeight + "px");
+                    throw new BadRequestException("The selected cover picture exceeds the maximum size of " + maxWidth + " x " + maxHeight + "px");
                 }
             }
 
