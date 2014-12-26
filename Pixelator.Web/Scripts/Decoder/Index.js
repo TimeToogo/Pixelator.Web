@@ -22,6 +22,9 @@
     DecoderContainer.DefineStep("/Decoder/ChooseDownloads", "Download your data", false, true);
 
     DecoderContainer.DefineCompletePage("/decoder/");
+    DecoderContainer.OnComplete = function () {
+        ga('send', 'event', 'Transcoding', 'Decoded Picture');
+    };
 
     DecoderContainer.LoadStep(DecoderContainer.Steps[0]);
 });

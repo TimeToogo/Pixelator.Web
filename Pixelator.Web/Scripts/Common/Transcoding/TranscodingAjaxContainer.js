@@ -22,6 +22,7 @@
     this.SaveToJob = function () { };
     this.CurrentPageIsValid = function () { };
     this.DisplayError = function () { };
+    this.OnComplete = function () { };
 
     this.LoadStep = function () {
         TranscodingAjaxContainer.prototype.LoadStep.apply(This, arguments);
@@ -202,6 +203,7 @@ TranscodingAjaxContainer.prototype.ShouldWarnUserLeaving = function (ShouldWarn)
 
 TranscodingAjaxContainer.prototype.Complete = function () {
     this.Dispose();
+    this.OnComplete();
     this.ParentContainer.Load(this.CompleteUrl);
 }
 

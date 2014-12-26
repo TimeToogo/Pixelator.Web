@@ -23,6 +23,9 @@
     EncoderContainer.DefineStep("/Encoder/Display", "Here's your image", false, true);
 
     EncoderContainer.DefineCompletePage("/encoder/");
+    EncoderContainer.OnComplete = function () {
+        ga('send', 'event', 'Transcoding', 'Encoded Picture');
+    };
 
     EncoderContainer.LoadStep(EncoderContainer.Steps[0]);
     
