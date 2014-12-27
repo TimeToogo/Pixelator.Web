@@ -5,8 +5,9 @@
             Width: @WebConfigurationManager.AppSettings["MaxEmbeddedPictureWidth"],
             Height: @WebConfigurationManager.AppSettings["MaxEmbeddedPictureHeight"]
         },
-        MaxDataSize: {
+        MaxDataSizes: {
             Raw: @WebConfigurationManager.AppSettings["MaxDataSizeForRawStorage"],
+            AutoPixelStorage: @WebConfigurationManager.AppSettings["MaxDataSizeForAutoPixelStorage"],
             HighPixelStorage: @WebConfigurationManager.AppSettings["MaxDataSizeForHighPixelStorage"],
             MediumPixelStorage: @WebConfigurationManager.AppSettings["MaxDataSizeForMediumPixelStorage"],
             LowPixelStorage: @WebConfigurationManager.AppSettings["MaxDataSizeForLowPixelStorage"]

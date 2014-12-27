@@ -13,10 +13,13 @@
         var Files = Container.TranscodingJob.Files;
         var Directories = Container.TranscodingJob.RelativeDirectories;
         var EmbeddedImage = Container.TranscodingJob.EmbeddedImage;
-        var MaxUploadSize = 20971520;
-        var MaxUploadString = "20MB";
+
+
+        var MaxUploadSize = Container.TranscodingJob.GetMaximumDataSize();
+        var MaxUploadString = SizeToApproxString(MaxUploadSize);
         var MaxFilesLimit = 10000;
         var MaxDirectoriesLimit = 1000;
+
 
         HandlePictureInput = function (Files) {
             if (Files[0] != undefined) {
@@ -350,14 +353,7 @@
             UpdateDataList();
         }
 
-        UpdateDataList = function() {
-            UploadDataList.Update(Files, Directories);
-            if (EmbeddedImage != undefined) {
-                UploadDataList.PrependRootFile(EmbeddedImage, "Picture");
-            }
-        }
-        
-        RemoveFromArray = function(RemoveArray, SourceArray) {
+        RemoveFromArray = function (RemoveArray, SourceArray) {
             var NewArray = [];
             for (var i = 0; i < SourceArray.length; i++) {
                 var Element = SourceArray[i];
@@ -366,6 +362,23 @@
             }
 
             return NewArray;
+        }
+
+        UpdateDataList = function () {
+            Container.SaveToJob(Container.TranscodingJob);
+            MaxUploadSize = Container.TranscodingJob.GetMaximumDataSize();
+            MaxUploadString = SizeToApproxString(MaxUploadSize);
+
+            if (Container.TranscodingJob.GetTotalDataSize() > window.TranscodingConfig.MaxDataSizes.AutoPixelStorage) {
+                SpecifyPicture.prop("disabled", true).attr("title", "The select data exceeds the maximum size limit for a cover photo");
+            } else {
+                SpecifyPicture.prop("disabled", false).removeAttr("title");
+            }
+
+            UploadDataList.Update(Files, Directories);
+            if (EmbeddedImage != undefined) {
+                UploadDataList.PrependRootFile(EmbeddedImage, "Picture");
+            }
         }
 
         ValidateFileAmount = function(Amount) {

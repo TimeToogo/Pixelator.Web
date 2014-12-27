@@ -1,5 +1,5 @@
 ﻿EncodingJob = function () {
-    var Self = this;
+    var This = this;
 
     this.Files = [];
 
@@ -15,11 +15,31 @@
 
     this.GetTotalDataSize = function () {
         var TotalSize = 0;
-        $.each(Self.Files, function (Key, File) {
+        $.each(This.Files, function (Key, File) {
             TotalSize += File.Length;
         });
 
         return TotalSize;
+    }
+
+    this.GetMaximumDataSize = function() {
+        var MaxUploadSizeConfig = window.TranscodingConfig.MaxDataSizes;
+
+        if (This.EmbeddedImage == undefined) {
+            return MaxUploadSizeConfig.Raw;
+        }
+        else if (This.PixelStorageMethod === "High") {
+            return MaxUploadSizeConfig.AutoPixelStorage;
+        }
+        else if (This.PixelStorageMethod === "Medium") {
+            return MaxUploadSizeConfig.MediumPixelStorage;
+        }
+        else if (This.PixelStorageMethod === "Low") {
+            return MaxUploadSizeConfig.LowPixelStorage;
+        }
+        else {
+            return MaxUploadSizeConfig.AutoPixelStorage;
+        }
     }
 }
 
@@ -38,7 +58,7 @@ TranscodingConfiguration = function () {
 
     this.ImageFormat = undefined;
 
-    this.PixelStorageLevel = undefined;
+    this.PixelStorageLevel = "Auto";
 
     this.CompressionLevel = undefined;
 

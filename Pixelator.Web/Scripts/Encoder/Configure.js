@@ -74,6 +74,29 @@
             Configuration.ImageFormat = ImageFormatSelect.val();
         });
 
+        PixelStorageLevelSelect.prop("disabled", EncodingJob.EmbeddedImage == undefined);
+        var DataSize = EncodingJob.GetTotalDataSize();
+        var MaxUploadSizeConfig = window.TranscodingConfig.MaxDataSizes;
+
+        var DisabledOptionIfAboveLimit = function (OptionValue, Limit) {
+            var OverLimit = DataSize > Limit;
+            var Option = PixelStorageLevelSelect.children("option[value=" + OptionValue + "]");
+
+            Option.prop("disabled", OverLimit);
+            if (OverLimit) {
+                Option.attr("title", "The select data exceeds the maximum size limit for this pixel storage level");
+            } else {
+                Option.removeAttr("title");
+            }
+        }
+        DisabledOptionIfAboveLimit("Low", MaxUploadSizeConfig.LowPixelStorage);
+        DisabledOptionIfAboveLimit("Medium", MaxUploadSizeConfig.MediumPixelStorage);
+        DisabledOptionIfAboveLimit("High", MaxUploadSizeConfig.HighPixelStorage);
+
+        if (PixelStorageLevelSelect.children("option[value=" + Configuration.PixelStorageLevel + "]").prop("disabled")) {
+            Configuration.PixelStorageLevel = undefined;
+        }
+
         if (Configuration.PixelStorageLevel != undefined)
             PixelStorageLevelSelect.val(Configuration.PixelStorageLevel);
         else
