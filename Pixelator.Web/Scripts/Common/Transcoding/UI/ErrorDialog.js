@@ -7,10 +7,10 @@
     this.ErrorMessageElement = ErrorDialogElement.find(".ErrorMessage");
     this.OKButtonElement = ErrorDialogElement.find(".ErrorButtons > .OKButton");
     this.ClosedCallback = undefined;
+    this.OriginalErrorTitle = this.ErrorTitleElement.text();
 
     this.Show = function (ErrorMessage, ErrorTitle, ClosedCallback) {
-        if (ErrorTitle != undefined)
-            This.ErrorTitleElement.text(ErrorTitle);
+        This.ErrorTitleElement.text(ErrorTitle || This.OriginalErrorTitle);
         This.ErrorMessageElement.text(ErrorMessage);
         This.ClosedCallback = ClosedCallback;
 
@@ -20,8 +20,9 @@
     this.Close = function () {
         This.ErrorDialogElement.addClass("Hidden");
 
-        if (This.ClosedCallback != undefined)
+        if (This.ClosedCallback != undefined) {
             This.ClosedCallback();
+        }
     }
 
     this.OKButtonElement.click(this.Close);

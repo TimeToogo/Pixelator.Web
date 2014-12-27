@@ -47,6 +47,8 @@ body {
 header {
     position: relative;
 	width: 100%;
+    background:#111;
+    background:-moz-linear-gradient(to top, #111 0%, #252525 100%);
     background:linear-gradient(to top, #111 0%, #252525 100%);
     box-shadow:#000 0 0 3px;
     box-sizing:border-box;
