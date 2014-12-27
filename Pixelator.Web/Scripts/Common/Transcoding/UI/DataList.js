@@ -275,24 +275,4 @@
         $(Elements).filter(".ui-selected").removeClass("ui-selected").addClass("ui-unselecting");
         SelectableElementObject._mouseStop(null);
     }
-
-    SizeToApproxString = function (Size) {
-        var FileSizeMeasures = ["B", "KB", "MB", "GB", "TB"];
-        var CurrentSize = Size;
-        var CurrentSizeMeasure = FileSizeMeasures[0];
-        var MaxSize = 1024;
-        //Loop though the different FileSizeMeasures until an appropriate measure
-        for (var i = 1; i < FileSizeMeasures.length; i++) {
-            if (CurrentSize >= MaxSize) {
-                CurrentSizeMeasure = FileSizeMeasures[i];
-                CurrentSize = CurrentSize / MaxSize;
-            }
-        }
-        //Round to one decimal place
-        CurrentSize = Math.round(CurrentSize * 10) / 10;
-        //Format and return string
-        var ApproxSizeString = CurrentSize.toString() + " " + CurrentSizeMeasure;
-
-        return ApproxSizeString;
-    }
 }

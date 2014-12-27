@@ -1,0 +1,15 @@
+﻿@using System.Web.Configuration
+<script type="text/javascript">
+    window.TranscodingConfig = {
+        MaxCoverImageSize: {
+            Width: @WebConfigurationManager.AppSettings["MaxEmbeddedPictureWidth"],
+            Height: @WebConfigurationManager.AppSettings["MaxEmbeddedPictureHeight"]
+        },
+        MaxDataSize: {
+            Raw: @WebConfigurationManager.AppSettings["MaxDataSizeForRawStorage"],
+            HighPixelStorage: @WebConfigurationManager.AppSettings["MaxDataSizeForHighPixelStorage"],
+            MediumPixelStorage: @WebConfigurationManager.AppSettings["MaxDataSizeForMediumPixelStorage"],
+            LowPixelStorage: @WebConfigurationManager.AppSettings["MaxDataSizeForLowPixelStorage"]
+        }
+    };
+</script>

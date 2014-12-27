@@ -21,7 +21,24 @@
         HandlePictureInput = function (Files) {
             if (Files[0] != undefined) {
                 EmbeddedImage = File.FromFileData(Files[0]);
-                UpdateDataList();
+                LoadImageDimensions(EmbeddedImage).done(function(Dimensions) {
+                    var maxCoverImageSize = window.TranscodingConfig.MaxCoverImageSize;
+                    if (Dimensions.Width > maxCoverImageSize.Width
+                        || Dimensions.Height > maxCoverImageSize.Height) {
+                        ErrorDialog.Show("The selected cover picture exceeds the maximum size of "
+                            + maxCoverImageSize.Width + " x " + maxCoverImageSize.Height + "px."
+                            + " The picture will be resized to fit",
+                            undefined,
+                            function () {
+                                ResizeImage(EmbeddedImage, maxCoverImageSize.Width, maxCoverImageSize.Height)
+                                .always(UpdateDataList);
+                            });
+                    } else {
+                        UpdateDataList();
+                    }
+                }).fail(function() {
+                    UpdateDataList();
+                });
             }
         }
         
@@ -333,6 +350,7 @@
             UploadDataList.Update(Files, Directories);
             if (EmbeddedImage != undefined) {
                 UploadDataList.PrependRootFile(EmbeddedImage, "Picture");
+                $("<img/>").attr("src", window.URL.createObjectURL(EmbeddedImage.Data)).appendTo($("body"));
             }
         }
         

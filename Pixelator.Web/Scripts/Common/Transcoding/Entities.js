@@ -1,4 +1,5 @@
 ﻿EncodingJob = function () {
+    var Self = this;
 
     this.Files = [];
 
@@ -11,6 +12,15 @@
     this.Password = undefined;
 
     this.EmbeddedImage = undefined;
+
+    this.GetTotalDataSize = function () {
+        var TotalSize = 0;
+        $.each(Self.Files, function (Key, File) {
+            TotalSize += File.Length;
+        });
+
+        return TotalSize;
+    }
 }
 
 DecodingJob = function () {
@@ -47,7 +57,14 @@ File = function () {
 
     this.Name = "";
 
+    this.Length = 0;
+
     this.Data = undefined;
+
+    this.UpdateData = function (Data) {
+        This.Data = Data;
+        This.Length = Data.size;
+    }
 
     this.GetFullPath = function () {
         if (This.RelativePath.substr(This.RelativePath.length - 1) === "\\") {
@@ -55,10 +72,6 @@ File = function () {
         }
 
         return This.RelativePath + "\\" + This.Name;
-    }
-
-    this.UpdateFromData = function () {
-        This = File.FromFileData(This.Data);
     }
 }
 

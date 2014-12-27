@@ -258,21 +258,13 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\pixelator.io - Web Deploy.pubxml" />
     <None Include="Scripts\Referenced\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\Referenced\canvas-to-blob.js" />
     <Content Include="Scripts\Referenced\jquery-1.9.1.js" />
     <Content Include="Scripts\Referenced\jquery-1.9.1.min.js" />
     <Content Include="Scripts\Referenced\jquery-ui-1.10.2.js" />
     <Content Include="Scripts\Referenced\jquery-ui-1.10.2.min.js" />
     <Content Include="Scripts\Referenced\jquery.cookie.js" />
     <Content Include="Scripts\Referenced\jquery.fileDownload.js" />
-    <Content Include="Scripts\Referenced\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\Referenced\jquery.unobtrusive-ajax.min.js" />
-    <None Include="Scripts\Referenced\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\Referenced\jquery.validate.js" />
-    <Content Include="Scripts\Referenced\jquery.validate.min.js" />
-    <Content Include="Scripts\Referenced\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\Referenced\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\Referenced\knockout-2.2.1.debug.js" />
-    <Content Include="Scripts\Referenced\knockout-2.2.1.js" />
     <Content Include="Scripts\Referenced\modernizr-2.6.2.js" />
     <None Include="Scripts\Referenced\_references.js" />
     <Content Include="Web.config" />
@@ -288,6 +280,7 @@
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Shared\Analytics.cshtml" />
+    <Content Include="Views\Shared\JsConfig.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

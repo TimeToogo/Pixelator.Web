@@ -30,11 +30,8 @@ namespace Pixelator.Web
             bundles.Add(new ScriptBundle("~/Bundles/Js/JqueryUI")
                 .Include("~/Scripts/Referenced/jquery-ui-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/Bundles/Js/JqueryValidation")
-                .Include("~/Scripts/Referenced/jquery.unobtrusive*",
-                        "~/Scripts/Referenced/jquery.validate*"));
-
-            bundles.Add(new ScriptBundle("~/Bundles/Js/JqueryPlugins")
+            bundles.Add(new ScriptBundle("~/Bundles/Js/Plugins")
+                .Include("~/Scripts/Referenced/canvas-to-blob.js")
                 .Include("~/Scripts/Referenced/jquery.cookie.js")
                 .Include("~/Scripts/Referenced/jquery.fileDownload.js"));
 
