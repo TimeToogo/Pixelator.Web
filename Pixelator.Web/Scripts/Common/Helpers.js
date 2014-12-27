@@ -96,8 +96,7 @@ function ResizeImage(ImageFile, MaxWidth, MaxHeight) {
                 {
                     maxWidth: MaxWidth,
                     maxHeight: MaxHeight,
-                    canvas: true,
-                    orientation: true
+                    canvas: true
                 }
             );
         } catch (Error) {
