@@ -42,7 +42,7 @@
 }
 
 @media screen and (max-width: 600px) {
-	#ChooseData #DataControls button:disabled {
+	#ChooseData #DataControls #AddDirectoryButton:disabled {
 		display: none;
 	}
 

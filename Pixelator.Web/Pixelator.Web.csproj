@@ -151,6 +151,7 @@
     <Content Include="Content\Css\Common\Transcoding\UI\ImageInputDataList.css" />
     <Content Include="Content\Css\Common\Transcoding\UI\DataList.css" />
     <Content Include="Content\Css\Common\Transcoding\UI\ErrorDialog.css" />
+    <Content Include="Content\Css\Common\Transcoding\UI\InputStructures.css" />
     <Content Include="Content\Css\Decoder\ChooseDownloads.css" />
     <Content Include="Content\Css\Decoder\ChoosePassword.css" />
     <Content Include="Content\Css\Decoder\ChooseImage.css" />

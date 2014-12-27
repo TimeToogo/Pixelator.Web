@@ -1,0 +1,44 @@
+﻿.LabeledInput {
+	display: table;
+	width: 100%;
+}
+
+	.LabeledInput > label {
+		display: table-cell;
+        color:#666;
+        font-size:26px;
+	    padding: 5px 0;
+	    box-sizing: border-box;
+	    width: 150px;
+	}
+	
+	.LabeledInput > .Input {
+		display: table-cell;
+	}
+
+	.LabeledInput > .Input > input {
+		width: 100%;
+        color:#666;
+        font-size:26px;
+	}
+
+@media screen and (max-width: 600px) {
+	.LabeledInput {
+		display: block;
+	}
+
+	.LabeledInput > label {
+		display: block;
+        font-size: 14px;
+		line-height: 12px;
+	}
+	
+	.LabeledInput > .Input {
+		display: block;
+		width: 100%;
+	}
+
+	.LabeledInput > .Input > {
+		width: 100%;
+	}
+}
