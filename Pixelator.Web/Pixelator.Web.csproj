@@ -266,8 +266,8 @@
     <Content Include="Scripts\Referenced\jquery-ui-1.10.2.min.js" />
     <Content Include="Scripts\Referenced\jquery.cookie.js" />
     <Content Include="Scripts\Referenced\jquery.fileDownload.js" />
+    <Content Include="Scripts\Referenced\load-image.all.min.js" />
     <Content Include="Scripts\Referenced\modernizr-2.6.2.js" />
-    <None Include="Scripts\Referenced\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

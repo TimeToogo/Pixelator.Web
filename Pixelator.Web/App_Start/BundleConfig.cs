@@ -32,6 +32,7 @@ namespace Pixelator.Web
 
             bundles.Add(new ScriptBundle("~/Bundles/Js/Plugins")
                 .Include("~/Scripts/Referenced/canvas-to-blob.js")
+                .Include("~/Scripts/Referenced/load-image.all.min.js")
                 .Include("~/Scripts/Referenced/jquery.cookie.js")
                 .Include("~/Scripts/Referenced/jquery.fileDownload.js"));
 
