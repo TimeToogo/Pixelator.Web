@@ -81,22 +81,34 @@ function LoadImageDimensions(ImageFile) {
 function ResizeImage(ImageFile, MaxWidth, MaxHeight) {
     return $.Deferred(function (Deferred) {
         try {
-            loadImage(
+            loadImage.parseMetaData(
                 ImageFile.Data,
-                function (canvas) {
-                    if (canvas.type === "error") {
-                        Deferred.reject();
-                    } else {
-                        canvas.toBlob(function (blob) {
-                            ImageFile.UpdateData(blob);
-                            Deferred.resolve();
-                        }, ImageFile.Data.type);
-                    }
+                function (data) {
+                    var originalOrientation = data.exif ? data.exif.get('Orientation') : undefined;
+
+                    loadImage(
+                        ImageFile.Data,
+                        function (canvas) {
+                            if (canvas.type === "error") {
+                                Deferred.reject();
+                            } else {
+                                canvas.toBlob(function (blob) {
+                                    ImageFile.UpdateData(blob);
+                                    Deferred.resolve();
+                                }, ImageFile.Data.type);
+                            }
+                        },
+                        {
+                            maxWidth: MaxWidth,
+                            maxHeight: MaxHeight,
+                            canvas: true,
+                            orientation: originalOrientation
+                        }
+                    );
                 },
                 {
-                    maxWidth: MaxWidth,
-                    maxHeight: MaxHeight,
-                    canvas: true
+                    maxMetaDataSize: 262144,
+                    disableImageHead: false
                 }
             );
         } catch (Error) {
