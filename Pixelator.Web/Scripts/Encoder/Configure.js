@@ -1,6 +1,7 @@
 ﻿$(document).ready(function() {
     window.EncoderContainer.RegisterStepLoader("/Encoder/Configure", function() {
         var Container = window.EncoderContainer;
+        var EncodingJob = Container.TranscodingJob;
         var Password = Container.TranscodingJob.Password;
         var FileName = Container.TranscodingJob.FileName;
         var Configuration = Container.TranscodingJob.TranscodingConfiguration;
@@ -36,6 +37,11 @@
 
         UpdateDataList();
 
+        if (!FileName && EncodingJob.EmbeddedImage != undefined) {
+            var lastDot = EncodingJob.EmbeddedImage.Name.indexOf(".");
+            FileName = lastDot === -1 ? EncodingJob.EmbeddedImage.Name : EncodingJob.EmbeddedImage.Name.substring(0, lastDot);
+        }
+
         var FileNameInput = $("#FileNameInput");
         FileNameInput.val(FileName);
         FileNameInput.keyup(function() {
@@ -53,8 +59,8 @@
             ImageFormatSelect.val(Configuration.ImageFormat);
         else {
             var ImageFormatOptionValue = undefined;
-            if (Container.TranscodingJob.EmbeddedImage != undefined) {
-                var ImageFormat = Container.TranscodingJob.EmbeddedImage.Name.split(".").pop().toUpperCase();
+            if (EncodingJob.EmbeddedImage != undefined && EncodingJob.EmbeddedImage.Name.indexOf(".")  !== -1) {
+                var ImageFormat = EncodingJob.EmbeddedImage.Name.split(".").pop().toUpperCase();
                 var ImageFormatOptionValue = ImageFormatSelect.children("option").filter(function () {
                     return this.value.toUpperCase() === ImageFormat;
                 }).attr("value");
