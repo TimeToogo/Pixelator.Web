@@ -37,8 +37,4 @@
 		display: block;
 		width: 100%;
 	}
-
-	.LabeledInput > .Input > {
-		width: 100%;
-	}
 }
