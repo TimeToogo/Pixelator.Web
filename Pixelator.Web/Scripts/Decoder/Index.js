@@ -11,14 +11,14 @@
     var DecoderContainer = window.DecoderContainer;
     DecoderContainer.PageTitlePrefix = Container.PageTitlePrefix;
 
-    DecoderContainer.DefineWarnUserLeavingMessage("Your image will not be decoded and saved if you leave");
+    DecoderContainer.DefineWarnUserLeavingMessage("Your picture will not be decoded and saved if you leave");
 
     DecoderContainer.DefineNextStepButton($("#ContinueButton"));
     DecoderContainer.DefinePreviousStepButton($("#BackButton"));
 
     DecoderContainer.DefineStep("/Decoder/ChooseImage", "Specify your picture", false, true);
     DecoderContainer.DefineStep("/Decoder/ChoosePassword", "Specify your password", true, true);
-    DecoderContainer.DefineStep("/Decoder/Decode", "Decoding your image", false, false);
+    DecoderContainer.DefineStep("/Decoder/Decode", "Decoding your picture", false, false);
     DecoderContainer.DefineStep("/Decoder/ChooseDownloads", "Download your data", false, true);
 
     DecoderContainer.DefineCompletePage("/decoder/");

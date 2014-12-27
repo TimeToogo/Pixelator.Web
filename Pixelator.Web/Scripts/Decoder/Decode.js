@@ -90,7 +90,7 @@
             switch (Reason) {
             case "invalid-image":
                 RedirectUrl = "/Decoder/ChooseImage";
-                Message = "The supplied file is not a decodable image";
+                Message = "The supplied file is not a decodable picture";
                 break;
             case "bad-password":
                 RedirectUrl = "/Decoder/ChoosePassword";
@@ -98,7 +98,7 @@
                 break;
             default:
                 RedirectUrl = "/Decoder/ChooseImage";
-                Message = "An error occurred while decoding your image";
+                Message = "An error occurred while decoding your picture";
                 if (CustomMessage) {
                     Message = CustomMessage;
                 }

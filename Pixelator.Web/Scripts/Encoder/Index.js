@@ -11,16 +11,16 @@
     var EncoderContainer = window.EncoderContainer;
     EncoderContainer.PageTitlePrefix = Container.PageTitlePrefix;
 
-    EncoderContainer.DefineWarnUserLeavingMessage("Your image will not be saved if you leave");
+    EncoderContainer.DefineWarnUserLeavingMessage("Your picture will not be saved if you leave");
 
     EncoderContainer.DefineNextStepButton($("#ContinueButton"));
     EncoderContainer.DefinePreviousStepButton($("#BackButton"));
 
     EncoderContainer.DefineStep("/Encoder/ChooseData", "Specify your data", false, true);
     EncoderContainer.DefineStep("/Encoder/ChoosePassword", "Choose a password", true, true);
-    EncoderContainer.DefineStep("/Encoder/Configure", "Configure your image", true, true);
-    EncoderContainer.DefineStep("/Encoder/Create", "Creating your image", false, false);
-    EncoderContainer.DefineStep("/Encoder/Display", "Here's your image", false, true);
+    EncoderContainer.DefineStep("/Encoder/Configure", "Configure your picture", true, true);
+    EncoderContainer.DefineStep("/Encoder/Create", "Creating your picture", false, false);
+    EncoderContainer.DefineStep("/Encoder/Display", "Here's your picture", false, true);
 
     EncoderContainer.DefineCompletePage("/encoder/");
     EncoderContainer.OnComplete = function () {
