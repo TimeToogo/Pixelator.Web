@@ -121,6 +121,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Config\ScheduleConfiguration.cs" />
+    <Compile Include="Config\Configuration.cs" />
+    <Compile Include="Config\TranscodingConfiguration.cs" />
     <Compile Include="Controllers\Api\DecoderController.cs" />
     <Compile Include="Controllers\Api\TranscoderController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -257,6 +260,12 @@
     <Content Include="Scripts\Encoder\Display.js" />
     <Content Include="Scripts\Encoder\Index.js" />
     <Content Include="packages.config" />
+    <Content Include="Pixelator.secret.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Pixelator.secret.config.dist">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\pixelator.io - Web Deploy.pubxml" />
     <None Include="Scripts\Referenced\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\Referenced\canvas-to-blob.js" />
@@ -269,12 +278,6 @@
     <Content Include="Scripts\Referenced\load-image.all.min.js" />
     <Content Include="Scripts\Referenced\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\Referenced\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\SocialMediaButtons.cshtml" />
@@ -282,6 +285,9 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Shared\Analytics.cshtml" />
     <Content Include="Views\Shared\JsConfig.cshtml" />
+    <Content Include="Pixelator.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

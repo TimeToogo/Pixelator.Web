@@ -18,6 +18,7 @@
             
             if (Files[0] != undefined) {
                 ImageFile = File.FromFileData(Files[0]);
+                ImageFile.Name = ImageFile.Name || "picture" + (ImageFile.GetExtensionFromType() ? "." + ImageFile.GetExtensionFromType() : "");
                 UpdateDataList();
             }
         }
@@ -46,9 +47,7 @@
 
         UpdateDataList();
 
-        SetUpDropZone(DataListDragDataArea, function (e) {
-            HandleFileInput(e.target.files || e.dataTransfer.files);
-        });
+        SetUpDropZone(DataListDragDataArea, HandleFileInput, HandleFileInput);
 
         FileInput.change(function() {
             HandleFileInput($(this).prop("files"));
@@ -62,5 +61,12 @@
             ImageFile = undefined;
             UpdateDataList();
         });
+
+        if (IsIOS()) {
+            ErrorDialog.Show("The picture decoder is not currently supported on iOS devices. "
+                + "This is due to forced file conversions causing unnecessary data loss."
+                + "You can still decode your picture by transferring the picture file to another device via email or other apps.",
+                "iOS devices not supported");
+        }
     });
 });

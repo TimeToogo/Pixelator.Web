@@ -27,8 +27,25 @@ function SetUpDropZone(DataListDragDataArea, HandleDroppedDataCallback) {
     DrageAreaDomElement.addEventListener("dragover", DragChanged);
     DrageAreaDomElement.addEventListener("dragleave", DragChanged);
     DrageAreaDomElement.addEventListener("drop", function (e) {
-        HandleDroppedDataCallback(e);
+        HandleDroppedDataCallback(e.target.files || e.dataTransfer.files, e.dataTransfer ? e.dataTransfer.items : undefined);
         DragChanged(e);
+    });
+}
+
+function SetUpPasteZone(PasteElement, PasteCallback) {
+    PasteElement.on("paste", function (e) {
+        var items = (e.clipboardData || e.originalEvent.clipboardData).items;
+        var fileItems = [];
+        var files = [];
+        for (var i = 0; i < items.length; i++) {
+            var file = items[i].getAsFile();
+            if (file) {
+                files.push(file);
+                fileItems.push(items[i]);
+            }
+        }
+
+        PasteCallback(files, fileItems);
     });
 }
 

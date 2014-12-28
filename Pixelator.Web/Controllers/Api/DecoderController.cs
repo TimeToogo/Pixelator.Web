@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -9,7 +8,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Configuration;
 using System.Web.Http;
 using Ionic.Zip;
 using Pixelator.Api;
@@ -245,7 +243,7 @@ namespace Pixelator.Web.Controllers.Api
             return new DecodingConfiguration(
                 password,
                 new MemoryStorageProvider(),
-                int.Parse(WebConfigurationManager.AppSettings["BufferSize"]));
+                TranscodingConfiguration.BufferSize);
         }
 
         private async Task<DecodingJob> BuildDecodingJob(HttpRequestMessage request)

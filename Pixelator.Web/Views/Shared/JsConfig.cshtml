@@ -1,16 +1,16 @@
-﻿@using System.Web.Configuration
+﻿@using Pixelator.Web.Config
 <script type="text/javascript">
     window.TranscodingConfig = {
         MaxCoverImageSize: {
-            Width: @WebConfigurationManager.AppSettings["MaxEmbeddedPictureWidth"],
-            Height: @WebConfigurationManager.AppSettings["MaxEmbeddedPictureHeight"]
+            Width: @Configuration.Transcoding.EmbeddedPictureLimits.Width,
+            Height: @Configuration.Transcoding.EmbeddedPictureLimits.Height
         },
         MaxDataSizes: {
-            Raw: @WebConfigurationManager.AppSettings["MaxDataSizeForRawStorage"],
-            AutoPixelStorage: @WebConfigurationManager.AppSettings["MaxDataSizeForAutoPixelStorage"],
-            HighPixelStorage: @WebConfigurationManager.AppSettings["MaxDataSizeForHighPixelStorage"],
-            MediumPixelStorage: @WebConfigurationManager.AppSettings["MaxDataSizeForMediumPixelStorage"],
-            LowPixelStorage: @WebConfigurationManager.AppSettings["MaxDataSizeForLowPixelStorage"]
+            Raw: @Configuration.Transcoding.EncodedDataLimits.RawStorage,
+            AutoPixelStorage: @Configuration.Transcoding.EncodedDataLimits.AutoPixelStorage,
+            HighPixelStorage: @Configuration.Transcoding.EncodedDataLimits.HighPixelStorage,
+            MediumPixelStorage: @Configuration.Transcoding.EncodedDataLimits.MediumPixelStorage,
+            LowPixelStorage: @Configuration.Transcoding.EncodedDataLimits.LowPixelStorage
         }
     };
 </script>

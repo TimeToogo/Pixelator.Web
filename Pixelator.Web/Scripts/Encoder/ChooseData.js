@@ -74,6 +74,10 @@
                 if (_File.Name != ".")
                     NewFiles.push(_File);
 
+                if (!_File.Name) {
+                    _File.Name = "file-" + (Files.length + i) + (_File.GetExtensionFromType() ? "." + _File.GetExtensionFromType() : "");
+                }
+
                 if (_File.RelativePath == "" || DirectoryPaths.indexOf(_File.RelativePath) != -1)
                     continue;
 
@@ -107,12 +111,12 @@
             DataListElement.css("cursor", "default");
         }
 
-        HandleDroppedData = function(e) {
+        HandleDroppedData = function(files, items) {
             //Warn user leaving when they enter data
             Container.ShouldWarnUserLeaving(true);
 
             if (!IsChrome) {
-                HandleFileInput(e.target.files || e.dataTransfer.files);
+                HandleFileInput(files);
                 return;
             }
 
@@ -145,8 +149,8 @@
                 Failed = true;
             };
             try {
-                for (var i = 0; i < e.dataTransfer.items.length; i++) {
-                    var Item = e.dataTransfer.items[i];
+                for (var i = 0; i < items.length; i++) {
+                    var Item = items[i];
                     var Entry = Item.webkitGetAsEntry();
                     if (Entry.isFile) {
                         AddFile({ Entry: Entry, Data: Item.getAsFile() });
@@ -488,6 +492,7 @@
         }
 
         SetUpDropZone(DataListDragDataArea, HandleDroppedData);
+        SetUpPasteZone($(document), HandleFileInput);
 
         //Bind the remove selected button to respective method
         var RemoveSelectedButton = $("#RemoveSelectedButton");

@@ -1,4 +1,5 @@
 ﻿@using System.Web.Configuration
+@using Pixelator.Web.Config
 @using Pixelator.Web.Helpers;
 @{
     ViewBag.Title = "About";
@@ -32,7 +33,7 @@
         <div class="Content">
             Pixelator.io is built with the security of your data in mind. Uploading and downloading of your data is done securely
             over the internet under a HTTPS connection. Your data will not be stored in its raw format on our servers and the encoded
-            pictures are only stored for about @WebConfigurationManager.AppSettings["JobExpiryIntervalSeconds"] seconds to allow you to
+            pictures are only stored for about @Configuration.Transcoding.JobExpiryIntervalSeconds seconds to allow you to
             download the results. If a password is provided, the encoded picture will contain your data in a secure encrypted form.
             We currently use the AES encryption algorithm combined with strong password hashing to ensure your data is secure as possible.
         </div>
@@ -47,25 +48,25 @@
                 </tr>
                 <tr>
                     <td>Without Cover Picture:</td>
-                    <td>@FileSize.Format(int.Parse(WebConfigurationManager.AppSettings["MaxDataSizeForRawStorage"]))</td>
+                    <td>@FileSize.Format(Configuration.Transcoding.EncodedDataLimits.RawStorage)</td>
                 </tr>
                 <tr>
                     <td>High Pixel Storage (More distorted):</td>
-                    <td>@FileSize.Format(int.Parse(WebConfigurationManager.AppSettings["MaxDataSizeForHighPixelStorage"]))</td>
+                    <td>@FileSize.Format(Configuration.Transcoding.EncodedDataLimits.HighPixelStorage)</td>
                 </tr>
                 <tr>
                     <td>Medium Pixel Storage:</td>
-                    <td>@FileSize.Format(int.Parse(WebConfigurationManager.AppSettings["MaxDataSizeForMediumPixelStorage"]))</td>
+                    <td>@FileSize.Format(Configuration.Transcoding.EncodedDataLimits.MediumPixelStorage)</td>
                 </tr>
                 <tr>
                     <td>Low Pixel Storage (Less distorted):</td>
-                    <td>@FileSize.Format(int.Parse(WebConfigurationManager.AppSettings["MaxDataSizeForLowPixelStorage"]))</td>
+                    <td>@FileSize.Format(Configuration.Transcoding.EncodedDataLimits.LowPixelStorage)</td>
                 </tr>
             </table>
             <p>
-                <strong>Cover Picture Size Limit:</strong> @WebConfigurationManager.AppSettings["MaxEmbeddedPictureWidth"]
+                <strong>Cover Picture Size Limit:</strong> @(Configuration.Transcoding.EmbeddedPictureLimits.Width)px
                 x
-                @WebConfigurationManager.AppSettings["MaxEmbeddedPictureHeight"]px
+                @(Configuration.Transcoding.EmbeddedPictureLimits.Height)px
             </p>
         </div>
     </div>

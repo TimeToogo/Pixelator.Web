@@ -1,11 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-using System.Net.Http;
 using System.Security.Cryptography;
-using System.Web.Configuration;
 using System.Web.Http;
-using Pixelator.Web.Filters;
+using Pixelator.Web.Config;
 
 namespace Pixelator.Web.Controllers.Api
 {
@@ -16,6 +14,18 @@ namespace Pixelator.Web.Controllers.Api
     {
         protected abstract DirectoryInfo JobDirectory { get; }
         private static readonly RNGCryptoServiceProvider _rngCrypto = new RNGCryptoServiceProvider();
+        private readonly TranscodingConfiguration _transcodingConfiguration = Config.Configuration.Transcoding;
+        private readonly ScheduleConfiguration _scheduleConfiguration = Config.Configuration.Schedule;
+
+        protected TranscodingConfiguration TranscodingConfiguration
+        {
+            get { return _transcodingConfiguration; }
+        }
+
+        protected ScheduleConfiguration ScheduleConfiguration
+        {
+            get { return _scheduleConfiguration; }
+        }
 
         protected string GetJobPath(Guid id)
         {
@@ -48,12 +58,12 @@ namespace Pixelator.Web.Controllers.Api
         [HttpGet]
         public void CleanOldJobs(string key)
         {
-            if (key != WebConfigurationManager.AppSettings["ScheduledTaskKey"])
+            if (key != ScheduleConfiguration.TaskKey)
             {
                 throw new HttpResponseException(HttpStatusCode.Forbidden);
             }
 
-            TimeSpan oldJobExpiryInterval = TimeSpan.FromSeconds(int.Parse(WebConfigurationManager.AppSettings["JobExpiryIntervalSeconds"]));
+            TimeSpan oldJobExpiryInterval = TimeSpan.FromSeconds(TranscodingConfiguration.JobExpiryIntervalSeconds);
 
             foreach (DirectoryInfo jobDirectory in JobDirectory.EnumerateDirectories("*", SearchOption.TopDirectoryOnly))
             {

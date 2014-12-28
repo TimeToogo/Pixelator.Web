@@ -9,7 +9,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Configuration;
 using System.Web.Http;
 using Pixelator.Api;
 using Pixelator.Api.Configuration;
@@ -61,7 +60,7 @@ namespace Pixelator.Web.Controllers.Api
             {
                 encryptionConfiguration = new EncryptionConfiguration(
                     encodingJob.EncryptionAlgorithm.Value,
-                    int.Parse(WebConfigurationManager.AppSettings["IterationCount"]));
+                    TranscodingConfiguration.IterationCount);
             }
 
             if (encodingJob.CompressionAlgorithm.HasValue)
@@ -137,8 +136,8 @@ namespace Pixelator.Web.Controllers.Api
             return new EncodingConfiguration(
                 password,
                 new MemoryStorageProvider(),
-                int.Parse(WebConfigurationManager.AppSettings["BufferSize"]),
-                int.Parse(WebConfigurationManager.AppSettings["FileGroupSize"]));
+                TranscodingConfiguration.BufferSize,
+                TranscodingConfiguration.FileGroupSize);
         }
 
         private async Task<EncodingJob> BuildEncodingJob(HttpRequestMessage request)
@@ -173,7 +172,7 @@ namespace Pixelator.Web.Controllers.Api
             KeyValuePair<string, Stream> embeddedImageUpload = provider.FileStreams.FirstOrDefault(file => file.Key == "embedded-image");
             if (embeddedImageUpload.Key != null)
             {
-                int maxFileSize = int.Parse(WebConfigurationManager.AppSettings["MaxEmbeddedPictureByteSize"]);
+                int maxFileSize = TranscodingConfiguration.EmbeddedPictureLimits.Bytes;
                 if (embeddedImageUpload.Value.Length > maxFileSize)
                 {
                     throw new BadRequestException("The selected cover picture exceeds the maximum file size of " + FileSize.Format(maxFileSize));
@@ -182,8 +181,8 @@ namespace Pixelator.Web.Controllers.Api
                 var pixelStorage = (EmbeddedImage.PixelStorage)Enum.Parse(typeof(EmbeddedImage.PixelStorage), form["pixel-storage-level"]);
                 encodingJob.EmbeddedImage = new EmbeddedImage(Image.FromStream(embeddedImageUpload.Value), pixelStorage);
 
-                var maxHeight = int.Parse(WebConfigurationManager.AppSettings["MaxEmbeddedPictureHeight"]);
-                var maxWidth = int.Parse(WebConfigurationManager.AppSettings["MaxEmbeddedPictureWidth"]);
+                var maxHeight = TranscodingConfiguration.EmbeddedPictureLimits.Height;
+                var maxWidth = TranscodingConfiguration.EmbeddedPictureLimits.Width;
                 if (encodingJob.EmbeddedImage.Image.Height > maxHeight || encodingJob.EmbeddedImage.Image.Width > maxWidth)
                 {
                     throw new BadRequestException("The selected cover picture exceeds the maximum size of " + maxWidth + " x " + maxHeight + "px");
@@ -230,29 +229,21 @@ namespace Pixelator.Web.Controllers.Api
 
         private int GetMaxDataSizeFor(EmbeddedImage.PixelStorage? storage)
         {
-            string key;
             switch (storage)
             {
                 case null:
-                    key = "MaxDataSizeForRawStorage";
-                    break;
+                    return TranscodingConfiguration.EncodedDataLimits.RawStorage;
                 case EmbeddedImage.PixelStorage.Auto:
-                    key = "MaxDataSizeForAutoPixelStorage";
-                    break;
+                    return TranscodingConfiguration.EncodedDataLimits.AutoPixelStorage;
                 case EmbeddedImage.PixelStorage.High:
-                    key = "MaxDataSizeForHighPixelStorage";
-                    break;
+                    return TranscodingConfiguration.EncodedDataLimits.HighPixelStorage;
                 case EmbeddedImage.PixelStorage.Medium:
-                    key = "MaxDataSizeForMediumPixelStorage";
-                    break;
+                    return TranscodingConfiguration.EncodedDataLimits.MediumPixelStorage;
                 case EmbeddedImage.PixelStorage.Low:
-                    key = "MaxDataSizeForLowPixelStorage";
-                    break;
+                    return TranscodingConfiguration.EncodedDataLimits.LowPixelStorage;
                 default:
                     throw new ArgumentOutOfRangeException("storage");
             }
-
-            return int.Parse(WebConfigurationManager.AppSettings[key]);
         }
 
         private static TEnum? ParseNullableEnum<TEnum>(string value) where TEnum : struct

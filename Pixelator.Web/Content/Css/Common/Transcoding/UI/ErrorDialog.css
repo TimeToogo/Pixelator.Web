@@ -35,8 +35,13 @@
 @media screen and (max-width: 600px) {
 
 	.ErrorDialog {
-		width:250px;
-		margin-left:-125px;
+		top:5%;
+        left: 10px;
+		right: 10px;
+		width: auto;
+		max-height: 90%;
+		overflow-y: scroll;
+		margin-left: 0;
 	}
 
 }

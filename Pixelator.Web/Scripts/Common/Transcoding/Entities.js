@@ -93,6 +93,12 @@ File = function () {
 
         return This.RelativePath + "\\" + This.Name;
     }
+
+    this.GetExtensionFromType = function () {
+        if (This.Data.type.indexOf("image") !== -1) {
+            return This.Data.type.substring(This.Data.type.indexOf("/") + 1);
+        }
+    }
 }
 
 File.FromFileData = function (FileData) {
