@@ -1,4 +1,8 @@
-﻿.Section {
+﻿#AboutText a {
+   color:#888;
+}
+
+.Section {
     margin-top:15px;
 }
 
@@ -51,11 +55,13 @@
             display:inline-block;
         }
 		
+ul.Plain {
+	list-style: none;
+	margin: 5px 0;
+	padding-left: 0;
+}
+
 #SiteBy  {
 	margin-top: 50px;
 	display: block;
-}
-
-#SiteBy a {
-   color:#888;
 }

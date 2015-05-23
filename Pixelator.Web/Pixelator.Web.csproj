@@ -277,14 +277,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\PublishProfiles\pixelator.io - Web Deploy.pubxml" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\Referenced\jquery-1.9.1.intellisense.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\Referenced\canvas-to-blob.js" />
     <Content Include="Scripts\Referenced\jquery-1.9.1.js" />
     <Content Include="Scripts\Referenced\jquery-1.9.1.min.js" />
