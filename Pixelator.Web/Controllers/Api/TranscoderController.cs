@@ -4,6 +4,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Web.Http;
 using Pixelator.Web.Config;
+using Pixelator.Web.Filters;
 
 namespace Pixelator.Web.Controllers.Api
 {
