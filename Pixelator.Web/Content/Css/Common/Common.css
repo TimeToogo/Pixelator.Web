@@ -124,7 +124,9 @@ header {
 		opacity: 0.9;
 	}
 
-		header .social > .twitter-share-button, header .social > .fb-like {
+		header .social > .twitter-share-button, 
+		header .social > .fb-like, 
+		header .social > .gh-star {
 			display: inline-block;
 			vertical-align: middle;
 		}
@@ -132,9 +134,14 @@ header {
 		header .social > .fb-like {
 			margin-right: 5px;
 		}
-
+		
 		header .social > .twitter-share-button {
 			width: 90px !important;
+		}
+
+		header .social > .gh-star {
+			width: 90px !important;
+			height: 20px !important;
 		}
 
 #Content {
